@@ -1,13 +1,31 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="chats.css">
+    <link rel="stylesheet" href="chatRooms.css">
     </head>
+
     <body>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-        <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="chats.js" type="text/Javascript"></script>
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 "  >  
+                    
+                    <div class="row" id="roomsContainer">
+
+                    </div>
+                    
+                </div>
+                
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="usersContainer">
+                </div>
+                
+            </div>
+
+
+        </div>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="chatRooms.js"></script>
 </html>
