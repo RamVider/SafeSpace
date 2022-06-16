@@ -1,7 +1,22 @@
 let users = ["cyvj", "nolj", "vbwioueai", "yvwiu", "in;nkj"];
-let rooms = ["grop 1", "prop 2", "prop 3", "prop 4"];
+let rooms = [{
+    name: "grop 1",
+    gropLink: "link"
+}, {
+    name: "grop 2",
+    gropLink: "link2"
+}, {
+    name: "grop 3",
+    gropLink: "link3"
+}, {
+    name: "grop 4",
+    gropLink: "link4"
+}, {
+    name: "grop 5",
+    gropLink: "link5"
+}];
 
-
+function creatNamesInHtml(users) {
     for (let i = 0; i < users.length; i++) {
         let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
@@ -12,12 +27,25 @@ let rooms = ["grop 1", "prop 2", "prop 3", "prop 4"];
                 </div>`;
         document.getElementById("usersContainer").innerHTML += div;
     }
-
-
-for (let i = 0; i < rooms.length; i++) {
-    let div = `
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" >
-                    ${rooms[i]}
-                </div>`;
-    document.getElementById("roomsContainer").innerHTML += div;
 }
+
+function creatRoomsInHtml(rooms) {
+    console.log(rooms.length)
+    let container=""
+    for (let i = 0; i < rooms.length; i++) {
+        let div = `
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms.link})" >
+                        ${rooms[i].name}
+                    </div>`;
+        container += div;
+    }
+    $("#roomsContainer").html(container)
+}
+
+function goToChat(link){
+    
+}
+
+
+creatNamesInHtml(users)
+creatRoomsInHtml(rooms)
