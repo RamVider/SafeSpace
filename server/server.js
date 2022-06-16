@@ -12,23 +12,39 @@ app.use(cors())
 
 app.listen(3000)
 app.post('/', function (req, res) {
-
     let users = [];
+    let result = addUsersToDB(db, users, req.body)
+    console.log(users)
+    res.send(result)
+});
+
+function addUsersToDB(db, users, body) {
     let db = readFromFile()
-    if (db!==""){   
-        db = JSON.parse(db)
-        if (typeof db == "object" && db.length > 0) {
-            users = db;
+    if (db !== "") {
+        users = JSON.parse(db)
+        if (isUserExist(body, users)) {
+            return "user exist";
         }
     }
-    console.log(users)
-    users.push(req.body)
+    users.push(req.body);
     saveToFile(JSON.stringify(users))
+    return "user added"
+}
 
-})
+function isUserExist(newUser, users) {
+    let result = false;
+    if (typeof users == "object" && users.length > 0) {
+        let resUser = users.find(function (user) {
+            return user.email === newUser.email
+        })
+        if (resUser !== undefined) {
+            result = true
+        }
+    }
+    return result
+}
 
 app.get('/', function (req, res) {
-
 
 
 })
