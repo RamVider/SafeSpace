@@ -1,4 +1,3 @@
-let users = ["cyvj", "nolj", "vbwioueai", "yvwiu", "in;nkj"];
 let rooms = [{
     name: "grop 1",
     gropLink: "link"
@@ -16,6 +15,20 @@ let rooms = [{
     gropLink: "link5"
 }];
 
+let users = [];
+
+$.get("http://localhost:3000/usersToRoomsPage",function(data,status){
+    if (status==="success") {
+        users=data
+    }else{
+        console.log("זה לא עובד")
+    }
+})
+
+
+
+
+
 function creatNamesInHtml(users) {
     for (let i = 0; i < users.length; i++) {
         let div = `<div class="row">
@@ -30,7 +43,6 @@ function creatNamesInHtml(users) {
 }
 
 function creatRoomsInHtml(rooms) {
-    console.log(rooms.length)
     let container=""
     for (let i = 0; i < rooms.length; i++) {
         let div = `
