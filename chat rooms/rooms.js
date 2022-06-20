@@ -15,16 +15,19 @@ let rooms = [{
     gropLink: "link5"
 }];
 
-let users = [];
+var users = [];
 
-$.get("http://localhost:3000/usersToRoomsPage",function(data,status){
-    if (status==="success") {
-        users=data
-    }else{
-        console.log("זה לא עובד")
-    }
-})
-
+function gett() {
+    $.get("http://localhost:3000/usersToRoomsPage",function(data,status){
+        if (status==="success") {
+            users=JSON.parse(data)
+            creatNamesInHtml(users)
+            creatRoomsInHtml(rooms)
+        }else{
+            console.log("זה לא עובד")
+        }
+    })
+}
 
 
 
@@ -34,7 +37,7 @@ function creatNamesInHtml(users) {
         let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                         <div class="nameSlot">
-                            ${users[i]}
+                            ${users[i].uName}
                         </div>
                     </div>
                 </div>`;
@@ -58,6 +61,4 @@ function goToChat(link){
     
 }
 
-
-creatNamesInHtml(users)
-creatRoomsInHtml(rooms)
+gett()

@@ -17,7 +17,7 @@ function send() {
     };
     $.post(`http://localhost:3000/`, user, function (data, status) {
         if (status == "success") {
-            alert("V")
+            alert(data)
             console.log(data)
         }
 

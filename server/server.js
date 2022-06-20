@@ -69,5 +69,5 @@ let users = readFromFile()
 
 
 app.get('/usersToRoomsPage', function (req, res) {
-    res.send(users)
+    res.send(readFromFile())
 })
