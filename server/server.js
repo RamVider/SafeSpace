@@ -46,4 +46,12 @@ function saveToFile(data) {
         return false;
     }
 }
+
+
+
 let users = readFromFile()
+
+
+app.get('/usersToRoomsPage', function (req, res) {
+    res.send(users)
+})
