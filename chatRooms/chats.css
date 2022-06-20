@@ -1,0 +1,22 @@
+.nameSlot{
+    border: 1px solid black;
+    margin-top: 2%;
+    border-radius: 5%;
+    font-size: 30px;
+    background-color: white;
+}
+
+.roomSlot{
+    height: 20vh;
+    border: 1px solid black;
+    margin: 1%;
+    border-radius: 5%;
+    background-color: white;
+
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+

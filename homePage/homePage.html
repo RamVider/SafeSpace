@@ -6,28 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="homePage.css">
-  <style>
-    .button {
-      background-color: #f56a4e;
-      border: none;
-      color: white;
-      padding: 50px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 25px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 50%;
-      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.378), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .button:hover {
-      background-color: #f43009;
-      color: white;
-    }
-  </style>
 </head>
-
 
 <body>
   <div id="header"></div>
@@ -36,7 +15,6 @@
       <div class="col-sm-5 card" id="whatYouDoInThePage" dir="rtl">
         <h1>האתר יעבוד כך:</h1>
         <h3>
-
           בכניסה לאתר, בעמוד הבית- תהיינה שתי אופציות;
           </br>
           לכאלה שמעוניינים בשיחה דחופה או חד פעמית עם פסיכולוג מקצועי-
@@ -44,21 +22,17 @@
           ברגע שיהיה זיהוי של לחיצה על הכפתור בצד של אנשי המקצוע- איש המקצוע הראשון שיהיה פנוי יפתח את הפנייה ויוכל
           לשוחח עם המטופל דרך הטלפון באתר, שניהם באנונימיות מוחלטת.
           </br>
-          ולכאלה שמעוניינים בסדרת טיפולים או המשך לטיפול- תהיה אופציה להירשם לאתר, למלא פרטים (לצורך אבטחה בסיסית
-          בלבד), ולבחור את הפסיכולוג שהם מעוניינים בטיפול אצלו לפי נושאי ההתמחות, הוותק והניסיון שלו- שיופיעו בתיאור
+          ולכאלה שמעוניינים בסדרת טיפולים או המשך לטיפול- תהיה אופציה להירשם לאתר, למלא פרטים (לצורך אבטחה בסיסית בלבד),
+          ולבחור את הפסיכולוג שהם מעוניינים בטיפול אצלו לפי נושאי ההתמחות, הוותק והניסיון שלו- שיופיעו בתיאור
           (שהפסיכולוג ימלא בהרשמה שלו לאתר), מתחת לשם ולתמונת הפרופיל שלו.
-          ברגע שהפסיכולוג יזהה קריאה לסדרת טיפולים או להמשך טיפול- הוא ייקח את הפרטים הבסיסיים של אותו מטופל ויוכל
-          לתאם איתו פגישה להמשך טיפול או לסדרת טיפולים.
-          <h3>
-      </div>
-      <div class="col-sm-2" id="sosButton">
-        <button class="button" class="open-button" onclick="openForm()">sos</button>
+          ברגע שהפסיכולוג יזהה קריאה לסדרת טיפולים או להמשך טיפול- הוא ייקח את הפרטים הבסיסיים של אותו מטופל ויוכל לתאם
+          איתו פגישה להמשך טיפול או לסדרת טיפולים.
+        </h3>
       </div>
       <div class="col-sm-5 card" id="abutThePage">
         <div dir="rtl">
           <h1> אודות האתר </h1>
           <h3>
-
             האתר נבנה על ידי קבוצת סטארטאפיסטים שנה ב מהעיר לוד; יהודה פלק, פריאל סרור, מרים ווחידי,
             אליה רם, אור טמייט, שילת ברנס, יונתן גימפל- והמדריך: רם וידר.
             </br>
@@ -72,29 +46,8 @@
           </h3>
         </div>
       </div>
-      <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
-          <div dir="rtl">
-            <h1>מקום תקשורת</h1>
-            </br>
-            <label for="email"><b>טלפון</b></label>
-            <input type="text" placeholder="הכנס מספר טלפון" id="phone" required>
-            </br>
-            </br>
-          </div>
-          <button type="button" onclick="sendNum()" class="btn">שלח</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">סגור</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="C:/FinalProject/SafeSpace/commonFiles/header.js"></script>
+      <script src="homePage.js"></script>
 </body>
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="C:/FinalProject/SafeSpace/commonFiles/header.js"></script>
-<script src="homePage.js"></script>
-
 </html>
