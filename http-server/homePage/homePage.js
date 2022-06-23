@@ -1,4 +1,6 @@
-
+$(function () {
+  $("#header").load("/commonFiles/header.html");
+});
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
