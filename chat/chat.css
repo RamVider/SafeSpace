@@ -1,0 +1,32 @@
+.chat-border {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 98vh;
+}
+.messages-area{
+    overflow-y: scroll;
+    background-color: beige;
+    height: 100%;
+    border-radius: 5px
+}
+.text-input{
+    bottom: 7px;
+    display: flex;
+    align-items: end;
+    position: absolute;
+    width: 103vh;
+}
+
+.send-btn {
+    bottom: 10px;
+    border-radius: 50%;
+    background-color: #40c340;
+    height: 35px;
+    width: 47px;
+}
+
+.send-btn img {
+    margin-left: 15px;
+    margin-top: 7px;
+    height: 20px;
+}
