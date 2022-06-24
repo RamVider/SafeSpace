@@ -7,49 +7,104 @@
 </head>
 
 <body>
+
     <div class="container">
-        <div class="row" style="margin-top: 16%;">
-            <div class="col-sm-4 main-row">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" placeholder="שם מלא" id="fName">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <input type="text" class="form-control" placeholder="גיל" id="age">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control" placeholder="שם משתמש" id="userName">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <input type="password" class="form-control" placeholder="סיסמה" id="password">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <input type="email" class="form-control" placeholder="email" id="mail">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <input type="text" class="form-control" placeholder="מספר נייד" id="phoneNumber">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button class="btn btn-block btn-primary" style="margin-bottom: 4px;" onclick="send()">send</button>
-                    </div>
+        <div id="login">
+            
+            <div class="row log">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 loginPage">
+                    התחברות
                 </div>
             </div>
-            <div class="col-sm-4 col-sm-offset-4">
-                <img src="img/logo.jpg" class="img-fluid img-responsive" style="block-size: 300px; left: 20%; z-index: 0;" alt="logo">
+            
+        
+            <div class="row outputBoxLG">
+                <div class="col-sm-5 main-rowL">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input dir="rtl" type="text" class="form-control" placeholder="שם משתמש" id="lUserName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input dir="rtl" type="password" class="form-control" placeholder="סיסמה" id="lPassword">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-block btn-primary" style="margin-bottom: 4px;"
+                                onclick="send()">send</button>
+                        </div>
+                    </div>
+                    <div dir="rtl" class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <a onclick="goToSignUp()">
+                                אין לך משתמש? לחץ פה להרשמה
+
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
+
+        <div id="signup" class="hidden">
+            <div class="row sign">
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 signup">
+                    הרשמה
+                </div>
+            </div>
+
+            <div class="row outputBoxSU">
+                <div class="col-sm-5 main-rowS">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input dir="rtl" type="text" class="form-control" placeholder="שם מלא" id="fName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <input dir="rtl" type="text" class="form-control" placeholder="גיל" id="age">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input dir="rtl" type="text" class="form-control" placeholder="שם משתמש" id="userName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input dir="rtl" type="password" class="form-control" placeholder="סיסמה" id="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <input dir="rtl" type="email" class="form-control" placeholder="email" id="mail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <input dir="rtl" type="text" class="form-control" placeholder="מספר נייד" id="phoneNumber">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-block btn-primary" style="margin-bottom: 4px;"
+                                onclick="send()">send</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-4 col-sm-offset-4">
+                <img src="img/logo.jpg" class="img-fluid img-responsive" style="block-size: 300px; left: 20%; z-index: 0;" alt="logo">
+            </div> -->
+            </div>
+        </div>
+
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="front.js" type="text/Javascript"></script>
