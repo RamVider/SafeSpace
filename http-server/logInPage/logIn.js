@@ -20,8 +20,6 @@ function send() {
             alert(data)
             console.log(data)
         }
-
-
     })
 }
 function getData() {
@@ -32,4 +30,9 @@ function getData() {
 
 
     })
+}
+function goToSignUp(){
+    $("#login").hide()
+    $("#signup").show()
+    document.getElementById("signup").classList.remove('hidden')
 }
