@@ -1,0 +1,14 @@
+.nameSlot{
+    border: 1px solid black;
+    margin-top: 1%;
+}
+
+.roomSlot{
+    height: 20vh;
+    border: 1px solid black;
+    margin: 1%;
+    border-radius: 5%;
+}
+
+
+
