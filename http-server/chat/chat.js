@@ -27,7 +27,7 @@ setInterval(function () {
             let messageCOntainer=""
             for (let i = 0; i < message.length; i++) {
                 let div=`
-                    <div>
+                    <div class="mesegeContainer">
                         <p class="uNameTitel">${message[i].user}</p>
                         <h3>${message[i].input}</h3>
                     </div>
