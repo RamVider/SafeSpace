@@ -41,4 +41,4 @@ setInterval(function () {
             $("#messages").html(messageCOntainer)
         }
     })
-}, 2000);
+}, 20);

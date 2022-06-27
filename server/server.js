@@ -21,7 +21,6 @@ function readFromFile(filePath) {
 function saveToFile(data,filePath) {
     try {
         fs.writeFileSync(filePath, data);
-        console.log("File written successfully");
         return true;
     } catch (err) {
         console.error(err);
