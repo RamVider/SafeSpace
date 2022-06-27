@@ -17,11 +17,9 @@ function send() {
     };
     $.post(`http://localhost:3000/`, user, function (data, status) {
         if (status == "success") {
-            alert("V")
+            alert(data)
             console.log(data)
         }
-
-
     })
 }
 function getData() {
@@ -32,4 +30,9 @@ function getData() {
 
 
     })
+}
+function goToSignUp(){
+    $("#login").hide()
+    $("#signup").show()
+    document.getElementById("signup").classList.remove('hidden')
 }

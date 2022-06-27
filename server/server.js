@@ -1,5 +1,3 @@
-const fs = require('fs')
-filePath = "/db/db.txt";
 const express = require('express')
 const cors = require('cors')
 const res = require('express/lib/response')
@@ -9,24 +7,26 @@ const { json } = require('express/lib/response');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
+const fs = require('fs')
+filePath = "/db/db.txt";
 
 app.listen(3000)
 app.post('/', function (req, res) {
     let users = [];
+    let db = readFromFile()
     let result = addUsersToDB(db, users, req.body)
     console.log(users)
     res.send(result)
 });
 
 function addUsersToDB(db, users, body) {
-    let db = readFromFile()
     if (db !== "") {
         users = JSON.parse(db)
         if (isUserExist(body, users)) {
             return "user exist";
         }
     }
-    users.push(req.body);
+    users.push(body);
     saveToFile(JSON.stringify(users))
     return "user added"
 }
