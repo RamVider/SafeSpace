@@ -38,4 +38,6 @@
 .mesegeContainer{
     border: 1px solid black;
     border-radius: 1%;
+    width: 80vh;
+    word-wrap: break-word;
 }

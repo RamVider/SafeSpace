@@ -22,7 +22,6 @@ $(function () {
 setInterval(function () {
     $.get("http://localhost:3000/dataToChat", function (data, status) {
         if (status === "success") {
-            // console.log(JSON.parse(data))
             let message = JSON.parse(data)
             let messageCOntainer=""
             for (let i = 0; i < message.length; i++) {
@@ -37,8 +36,7 @@ setInterval(function () {
                 `
                 messageCOntainer+=div
             }
-            console.log(messageCOntainer)
             $("#messages").html(messageCOntainer)
         }
-    })
-}, 20);
+    })}, 500);
+
