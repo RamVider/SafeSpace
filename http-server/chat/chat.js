@@ -22,12 +22,11 @@ $(function () {
 setInterval(function () {
     $.get("http://localhost:3000/dataToChat", function (data, status) {
         if (status === "success") {
-            // console.log(JSON.parse(data))
             let message = JSON.parse(data)
             let messageCOntainer=""
             for (let i = 0; i < message.length; i++) {
                 let div=`
-                    <div>
+                    <div class="mesegeContainer">
                         <p class="uNameTitel">${message[i].user}</p>
                         <h3>${message[i].input}</h3>
                     </div>
@@ -37,8 +36,7 @@ setInterval(function () {
                 `
                 messageCOntainer+=div
             }
-            console.log(messageCOntainer)
             $("#messages").html(messageCOntainer)
         }
-    })
-}, 20);
+    })}, 500);
+

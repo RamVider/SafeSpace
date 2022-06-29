@@ -8,8 +8,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
 const fs = require('fs')
-var usersFilePath = "/db/usersdb.txt";
-var filePathToChat = "/db/dbChat.txt"
+var filePath = "/db/db.txt";
+var filePathToChat = "/db/dbChat.txt";
 
 app.listen(3000)
 
@@ -56,7 +56,7 @@ app.post('/login', function (req, res) {
 
 app.post('/', function (req, res) {
     let users = [];
-    let db = readFromFile(usersFilePath)
+    let db = readFromFile(filePath)
     let result = addUsersToDB(db, users, req.body)
     console.log(users)
     res.send(result)
@@ -65,15 +65,18 @@ app.post('/', function (req, res) {
 function addUsersToDB(db, users, body) {
     if (db !== "") {
         users = JSON.parse(db)
-        if (isUserExist(body, users)) {
+        if (isUserEmailExist(body, users)) {
             return "user exist";
+        }
+        if (isUserNameExist(body, users)) {
+            return "user name in used"
         }
     }
     users.push(body);
-    saveToFile(JSON.stringify(users))
+    saveToFile(JSON.stringify(users),filePath)
     return "user added"
 }
-function isUserExist(newUser, users) {
+function isUserEmailExist(newUser, users) {
     let result = false;
     if (typeof users == "object" && users.length > 0) {
         let resUser = users.find(function (user) {
@@ -85,10 +88,23 @@ function isUserExist(newUser, users) {
     }
     return result
 }
+function isUserNameExist(newUser, users) {
+    let result = false;
+    if (typeof users == "object" && users.length > 0) {
+        let resUser = users.find(function (user) {
+            return user.uName === newUser.uName
+        })
+        if (resUser !== undefined) {
+            result = true
+        }
+    }
+    return result
+}
 //login page -END
 
 //chat rooms page
 app.get('/usersToRoomsPage', function (req, res) {
+
     res.send(readFromFile(filePath))
 })
 //chat rooms page -END
