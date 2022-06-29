@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
 const fs = require('fs')
-var filePath = "/db/db.txt";
+var usersFilePath = "/db/usersdb.txt";
 var filePathToChat = "/db/dbChat.txt"
 
 app.listen(3000)
@@ -18,7 +18,7 @@ app.listen(3000)
 function readFromFile(filePath) {
     return fs.readFileSync(filePath, 'utf-8');
 }
-function saveToFile(data,filePath) {
+function saveToFile(data, filePath) {
     try {
         fs.writeFileSync(filePath, data);
         return true;
@@ -30,13 +30,38 @@ function saveToFile(data,filePath) {
 //files system - END
 
 //login page
+function isUserExistForLogin(db, userEmail) {
+
+}
+app.post('/login', function (req, res) {
+    let users = [];
+    let result = "user don't exist";
+    let db = readFromFile(usersFilePath)
+    if (db !== "") {
+        users = JSON.parse(db);
+        let resUser = users.find(function (user) {
+            return user.email === req.body.email;
+        });
+        if (resUser !== undefined) {
+            if (resUser.password === req.body.password) {
+                result = "user confirmed";
+            }
+            else{
+                result = "wrong password";
+            }
+        }
+    }
+    res.send(result)
+});
+
 app.post('/', function (req, res) {
     let users = [];
-    let db = readFromFile()
+    let db = readFromFile(usersFilePath)
     let result = addUsersToDB(db, users, req.body)
     console.log(users)
     res.send(result)
 });
+
 function addUsersToDB(db, users, body) {
     if (db !== "") {
         users = JSON.parse(db)
@@ -83,6 +108,8 @@ function addMessageToDB(db, text, body) {
         text = JSON.parse(db)
     }
     text.push(body);
-    saveToFile(JSON.stringify(text),filePathToChat)
+    saveToFile(JSON.stringify(text), filePathToChat)
 }
+
+
 //Chats -END
