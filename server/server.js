@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
 const fs = require('fs')
-var usersFilePath = "/db/db.txt";
+var usersFilePath = "/db/usersDB.txt";
 var chatFilePath = "/db/dbChat.txt";
 
 app.listen(3000)
