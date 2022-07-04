@@ -1,3 +1,6 @@
+$(function () {
+    $("#header").load("/commonFiles/header.html");
+});
 let rooms = [{
     name: "grop 1",
     gropLink: "link"

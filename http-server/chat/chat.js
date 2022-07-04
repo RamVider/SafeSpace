@@ -1,3 +1,6 @@
+$(function () {
+    $("#header").load("/commonFiles/header.html");
+});
 function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()

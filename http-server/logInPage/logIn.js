@@ -3,20 +3,24 @@ var userInfo = []
 function login() {
     let email = $("#loginEmail").val()
     let pass = $("#loginPassword").val()
-    var userl = {
+    var user = {
         email: email,
         password: pass
     }
 
 
-    $.post(`http://localhost:3000/login`, userl, function (data, status) {
+    $.post(`http://localhost:3000/login`, user, function (data, status) {
     if (status == "success") {
-            alert(data)
-            console.log(data)
+            if(data === "user confirmed"){
+                location.href = "/chatRooms/chatRooms.html"
+            }
+            else{
+                alert(data)
+            }
         }
     })
 }
-function sendS() {
+function signIn() {
     let name = $("#fName").val();
     let age = $("#age").val();
     let uName = $("#userName").val();
@@ -35,7 +39,7 @@ function sendS() {
     $.post(`http://localhost:3000/`, user, function (data, status) {
 
     })
-    $.post(`http://localhost:3000/`, user, function (data, status) {
+    $.post(`http://localhost:3000/signin`, user, function (data, status) {
         if (status == "success") {
             alert(data)
             console.log(data)

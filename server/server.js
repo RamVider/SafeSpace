@@ -8,8 +8,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
 const fs = require('fs')
-var filePath = "/db/db.txt";
-var filePathToChat = "/db/dbChat.txt";
+var usersFilePath = "/db/db.txt";
+var chatFilePath = "/db/dbChat.txt";
 
 app.listen(3000)
 
@@ -40,7 +40,7 @@ app.post('/login', function (req, res) {
     if (db !== "") {
         users = JSON.parse(db);
         let resUser = users.find(function (user) {
-            return user.email === req.body.email;
+            return user.email.toLowerCase() === req.body.email.toLowerCase();
         });
         if (resUser !== undefined) {
             if (resUser.password === req.body.password) {
@@ -54,9 +54,9 @@ app.post('/login', function (req, res) {
     res.send(result)
 });
 
-app.post('/', function (req, res) {
+app.post('/signin', function (req, res) {
     let users = [];
-    let db = readFromFile(filePath)
+    let db = readFromFile(usersFilePath)
     let result = addUsersToDB(db, users, req.body)
     console.log(users)
     res.send(result)
@@ -73,7 +73,7 @@ function addUsersToDB(db, users, body) {
         }
     }
     users.push(body);
-    saveToFile(JSON.stringify(users),filePath)
+    saveToFile(JSON.stringify(users),usersFilePath)
     return "user added"
 }
 function isUserEmailExist(newUser, users) {
@@ -105,17 +105,17 @@ function isUserNameExist(newUser, users) {
 //chat rooms page
 app.get('/usersToRoomsPage', function (req, res) {
 
-    res.send(readFromFile(filePath))
+    res.send(readFromFile(usersFilePath))
 })
 //chat rooms page -END
 
 //Chats
 app.get("/dataToChat", function (req, res) {
-    res.send(readFromFile(filePathToChat))
+    res.send(readFromFile(chatFilePath))
 })
 app.post("/takeDataFromChat", function (req, res) {
     let text = [];
-    let db = readFromFile(filePathToChat)
+    let db = readFromFile(chatFilePath)
     let result = addMessageToDB(db, text, req.body)
     console.log(text)
 })
@@ -124,7 +124,7 @@ function addMessageToDB(db, text, body) {
         text = JSON.parse(db)
     }
     text.push(body);
-    saveToFile(JSON.stringify(text), filePathToChat)
+    saveToFile(JSON.stringify(text), chatFilePath)
 }
 
 
