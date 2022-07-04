@@ -1,4 +1,22 @@
-let rooms = [];
+$(function () {
+    $("#header").load("/commonFiles/header.html");
+});
+let rooms = [{
+    name: "grop 1",
+    gropLink: "link"
+}, {
+    name: "grop 2",
+    gropLink: "link2"
+}, {
+    name: "grop 3",
+    gropLink: "link3"
+}, {
+    name: "grop 4",
+    gropLink: "link4"
+}, {
+    name: "grop 5",
+    gropLink: "link5"
+}];
 
 var users = [];
 
