@@ -2,12 +2,9 @@ function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()
         let user = $("#uName").text()
-        let data = {
-            "user": user,
-            "input": input,
-        }
+        let data = {}
         $.post("http://localhost:3000/takeDataFromChat", data, function (data, status) { })
-        $("#input").val("");
+            $("#input").val("");
     }
 }
 
@@ -23,9 +20,9 @@ setInterval(function () {
     $.get("http://localhost:3000/dataToChat", function (data, status) {
         if (status === "success") {
             let message = JSON.parse(data)
-            let messageCOntainer=""
+            let messageCOntainer = ""
             for (let i = 0; i < message.length; i++) {
-                let div=`
+                let div = `
                     <div class="mesegeContainer">
                         <p class="uNameTitel">${message[i].user}</p>
                         <h3>${message[i].input}</h3>
@@ -34,9 +31,10 @@ setInterval(function () {
                     </br>
                     </br>
                 `
-                messageCOntainer+=div
+                messageCOntainer += div
             }
             $("#messages").html(messageCOntainer)
         }
-    })}, 500);
+    })
+}, 500);
 

@@ -1,28 +1,16 @@
-let rooms = [{
-    name: "grop 1",
-    gropLink: "link"
-}, {
-    name: "grop 2",
-    gropLink: "link2"
-}, {
-    name: "grop 3",
-    gropLink: "link3"
-}, {
-    name: "grop 4",
-    gropLink: "link4"
-}, {
-    name: "grop 5",
-    gropLink: "link5"
-}];
+let rooms = [];
 
 var users = [];
 
 function gett() {
+    $.get("http://localhost:3000/roomsToRoomsPage", function (data, status){
+        
+        creatRoomsInHtml(rooms)
+    })
     $.get("http://localhost:3000/usersToRoomsPage", function (data, status) {
         if (status === "success") {
             users = JSON.parse(data)
             creatNamesInHtml(users)
-            creatRoomsInHtml(rooms)
         } else {
             console.log("זה לא עובד")
         }
@@ -49,7 +37,7 @@ function creatRoomsInHtml(rooms) {
     let container = ""
     for (let i = 0; i < rooms.length; i++) {
         let div = `
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms.link})" >
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms.guid})" >
                         ${rooms[i].name}
                     </div>`;
         container += div;
