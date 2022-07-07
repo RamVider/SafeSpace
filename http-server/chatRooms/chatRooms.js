@@ -20,12 +20,16 @@ let rooms = [{
 
 var users = [];
 
+
 function gett() {
+    $.get("http://localhost:3000/roomsToRoomsPage", function (data, status) {
+
+        creatRoomsInHtml(rooms)
+    })
     $.get("http://localhost:3000/usersToRoomsPage", function (data, status) {
         if (status === "success") {
             users = JSON.parse(data)
             creatNamesInHtml(users)
-            creatRoomsInHtml(rooms)
         } else {
             console.log("זה לא עובד")
         }
@@ -52,7 +56,7 @@ function creatRoomsInHtml(rooms) {
     let container = ""
     for (let i = 0; i < rooms.length; i++) {
         let div = `
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms.link})" >
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms.guid})" >
                         ${rooms[i].name}
                     </div>`;
         container += div;
@@ -60,8 +64,48 @@ function creatRoomsInHtml(rooms) {
     $("#roomsContainer").html(container)
 }
 
-function goToChat(link) {
+gett()
 
+
+
+function createMorRoom() {
+    let name = $("#newGroopName").val()
+    let uName="צריך משתנה לזה"
+    const d = new Date();
+    let time = d.toString();
+    let data={
+       "roomName":name,
+       "guid":Uname+time
+    }
+    
 }
 
-gett()
+
+
+
+//pop up js
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

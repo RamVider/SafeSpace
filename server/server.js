@@ -53,7 +53,6 @@ app.post('/login', function (req, res) {
     }
     res.send(result)
 });
-
 app.post('/signin', function (req, res) {
     let users = [];
     let db = readFromFile(usersFilePath)
@@ -61,7 +60,6 @@ app.post('/signin', function (req, res) {
     console.log(users)
     res.send(result)
 });
-
 function addUsersToDB(db, users, body) {
     if (db !== "") {
         users = JSON.parse(db)
@@ -126,6 +124,4 @@ function addMessageToDB(db, text, body) {
     text.push(body);
     saveToFile(JSON.stringify(text), chatFilePath)
 }
-
-
 //Chats -END
