@@ -22,8 +22,8 @@ var users = [];
 
 
 function gett() {
-    $.get("http://localhost:3000/roomsToRoomsPage", function (data, status){
-        
+    $.get("http://localhost:3000/roomsToRoomsPage", function (data, status) {
+
         creatRoomsInHtml(rooms)
     })
     $.get("http://localhost:3000/usersToRoomsPage", function (data, status) {
@@ -63,15 +63,24 @@ function creatRoomsInHtml(rooms) {
     }
     $("#roomsContainer").html(container)
 }
-// createMorRoom(){
-    
-// }
-
-function goToChat(link) {
-
-}
 
 gett()
+
+
+
+function createMorRoom() {
+    let name = $("#newGroopName").val()
+    let uName="צריך משתנה לזה"
+    const d = new Date();
+    let time = d.toString();
+    let data={
+       "roomName":name,
+       "guid":Uname+time
+    }
+    
+}
+
+
 
 
 //pop up js
@@ -85,18 +94,18 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+btn.onclick = function () {
+    modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+span.onclick = function () {
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
