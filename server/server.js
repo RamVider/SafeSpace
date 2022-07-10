@@ -10,6 +10,7 @@ app.use(cors())
 const fs = require('fs')
 var usersFilePath = "/db/usersDB.txt";
 var chatFilePath = "/db/dbChat.txt";
+var chatRoomsFilePath = "/db/dbChatRooms.txt"
 
 app.listen(3000)
 
@@ -46,7 +47,7 @@ app.post('/login', function (req, res) {
             if (resUser.password === req.body.password) {
                 result = "user confirmed";
             }
-            else{
+            else {
                 result = "wrong password";
             }
         }
@@ -71,7 +72,7 @@ function addUsersToDB(db, users, body) {
         }
     }
     users.push(body);
-    saveToFile(JSON.stringify(users),usersFilePath)
+    saveToFile(JSON.stringify(users), usersFilePath)
     return "user added"
 }
 function isUserEmailExist(newUser, users) {
@@ -102,20 +103,31 @@ function isUserNameExist(newUser, users) {
 
 //chat rooms page
 app.get('/usersToRoomsPage', function (req, res) {
-
     res.send(readFromFile(usersFilePath))
 })
+app.post('/rooms', function (req, res) {
+    let text = [];
+    let db = readFromFile(chatRoomsFilePath)
+    let result = addChatToDB(db, text, req.body)
+})
+function addChatToDB(db, text, body) {
+    if (db !== "") {
+        text = JSON.parse(db)
+    }
+    text.push(body);
+    saveToFile(JSON.stringify(text),chatRoomsFilePath)
+}
 //chat rooms page -END
 
 //Chats
 app.get("/dataToChat", function (req, res) {
     res.send(readFromFile(chatFilePath))
 })
-app.post("/takeDataFromChat", function (req, res) {
+app.post("/rooms", function (req, res) {
+    console.log("enter")
     let text = [];
     let db = readFromFile(chatFilePath)
     let result = addMessageToDB(db, text, req.body)
-    console.log(text)
 })
 function addMessageToDB(db, text, body) {
     if (db !== "") {

@@ -69,15 +69,16 @@ gett()
 
 
 function createMorRoom() {
+    
     let name = $("#newGroopName").val()
-    let uName="צריך משתנה לזה"
+    let uName = "צריך משתנה לזה"
     const d = new Date();
     let time = d.toString();
-    let data={
-       "roomName":name,
-       "guid":Uname+time
+    let data = {
+        "roomName": name,
+        "guid": uName + time
     }
-    
+    $.post("http://localhost:3000/rooms", data, function (data, status) {})
 }
 
 
