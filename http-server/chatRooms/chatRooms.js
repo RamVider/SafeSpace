@@ -8,8 +8,10 @@ var users = [];
 
 function gett() {
     $.get(consts.url + "roomsToRoomsPage", function (data, status) {
-        rooms = JSON.parse(data)
-        creatRoomsInHtml(rooms)
+        if(data!==""){
+            rooms = JSON.parse(data)
+            creatRoomsInHtml(rooms)
+        }
     })
     $.get(consts.url + "usersToRoomsPage", function (data, status) {
         if (status === "success") {

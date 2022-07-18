@@ -126,7 +126,7 @@ function addChatToDB(db, text, body) {
 app.get("/dataToChat", function (req, res) {
     res.send(readFromFile(chatFilePath))
 })
-app.post("/rooms", function (req, res) {
+app.post("/sendMesegeToDB", function (req, res) {
     console.log("enter")
     let text = [];
     let db = readFromFile(chatFilePath)
