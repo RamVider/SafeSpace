@@ -105,6 +105,9 @@ function isUserNameExist(newUser, users) {
 app.get('/usersToRoomsPage', function (req, res) {
     res.send(readFromFile(usersFilePath))
 })
+app.get("/roomsToRoomsPage",function(req,res){
+    res.send(readFromFile(chatRoomsFilePath))
+})
 app.post('/rooms', function (req, res) {
     let text = [];
     let db = readFromFile(chatRoomsFilePath)
