@@ -7,11 +7,11 @@ var users = [];
 
 
 function gett() {
-    $.get("http://localhost:3000/roomsToRoomsPage", function (data, status) {
-        rooms=JSON.parse(data)
+    $.get(consts.url + "roomsToRoomsPage", function (data, status) {
+        rooms = JSON.parse(data)
         creatRoomsInHtml(rooms)
     })
-    $.get("http://localhost:3000/usersToRoomsPage", function (data, status) {
+    $.get(consts.url + "usersToRoomsPage", function (data, status) {
         if (status === "success") {
             users = JSON.parse(data)
             creatNamesInHtml(users)
@@ -25,7 +25,7 @@ function gett() {
 
 
 function creatNamesInHtml(users) {
-    document.getElementById("usersContainer").innerHTML=""
+    document.getElementById("usersContainer").innerHTML = ""
     for (let i = 0; i < users.length; i++) {
         let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
@@ -34,7 +34,7 @@ function creatNamesInHtml(users) {
                         </div>
                     </div>
                 </div>`;
-        document.getElementById("usersContainer").innerHTML += div;
+        $("#usersContainer").append(div)
     }
 }
 
@@ -42,7 +42,7 @@ function creatRoomsInHtml(rooms) {
     let container = ""
     for (let i = 0; i < rooms.length; i++) {
         let div = `
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms[i].guid})" >
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat('${rooms[i].guid}')" >
                         ${rooms[i].roomName}
                     </div>`;
         container += div;
@@ -50,26 +50,27 @@ function creatRoomsInHtml(rooms) {
     $("#roomsContainer").html(container)
 }
 
+
 gett()
 
 function goToChat(guid) {
-   let url ="http://localhost:8080/chat/chat.html"+`?${guid}`
+    location.href = "/chat/chat.html?guid=" + guid;
 }
 
 function createMorRoom() {
-    if($("#newGroopName").val()!==""){
+    if ($("#newGroopName").val() !== "") {
         let name = $("#newGroopName").val()
         $("#newGroopName").val()
-        let uName = "צריך משתנה לזה"
+        let uName = "fix_this"
         const d = new Date();
-        let time = d.toString();
+        let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
             "roomName": name,
-            "guid": uName + time
+            "guid": uName + "_" + time
         }
-        $.post("http://localhost:3000/rooms", data, function (data, status) {})
+        $.post(consts.url + "rooms", data, function (data, status) { })
         gett()
-        
+
     }
 }
 

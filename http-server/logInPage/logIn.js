@@ -9,7 +9,7 @@ function login() {
     }
 
 
-    $.post(`http://localhost:3000/login`, user, function (data, status) {
+    $.post(consts.url + `login`, user, function (data, status) {
     if (status == "success") {
             if(data === "user confirmed"){
                 location.href = "/chatRooms/chatRooms.html"
@@ -36,10 +36,10 @@ function signIn() {
         email: email,
         phone: phone
     };
-    $.post(`http://localhost:3000/`, user, function (data, status) {
+    $.post(consts.url + ``, user, function (data, status) {
 
     })
-    $.post(`http://localhost:3000/signin`, user, function (data, status) {
+    $.post(consts.url + `signin`, user, function (data, status) {
         if (status == "success") {
             alert(data)
             console.log(data)
@@ -47,7 +47,7 @@ function signIn() {
     })
 }
 function getData() {
-    $.get(`http://localhost:3000/`, function (data, status) {
+    $.get(consts.url + ``, function (data, status) {
         if (status == "success") {
             userList = data
         }
