@@ -1,29 +1,14 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
 });
-let rooms = [{
-    name: "grop 1",
-    gropLink: "link"
-}, {
-    name: "grop 2",
-    gropLink: "link2"
-}, {
-    name: "grop 3",
-    gropLink: "link3"
-}, {
-    name: "grop 4",
-    gropLink: "link4"
-}, {
-    name: "grop 5",
-    gropLink: "link5"
-}];
+var rooms = [];
 
 var users = [];
 
 
 function gett() {
     $.get("http://localhost:3000/roomsToRoomsPage", function (data, status) {
-
+        rooms=JSON.parse(data)
         creatRoomsInHtml(rooms)
     })
     $.get("http://localhost:3000/usersToRoomsPage", function (data, status) {
@@ -40,6 +25,7 @@ function gett() {
 
 
 function creatNamesInHtml(users) {
+    document.getElementById("usersContainer").innerHTML=""
     for (let i = 0; i < users.length; i++) {
         let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
@@ -56,8 +42,8 @@ function creatRoomsInHtml(rooms) {
     let container = ""
     for (let i = 0; i < rooms.length; i++) {
         let div = `
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms.guid})" >
-                        ${rooms[i].name}
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms[i].guid})" >
+                        ${rooms[i].roomName}
                     </div>`;
         container += div;
     }
@@ -66,19 +52,25 @@ function creatRoomsInHtml(rooms) {
 
 gett()
 
-
+function goToChat(guid) {
+   let url ="http://localhost:8080/chat/chat.html"+`?${guid}`
+}
 
 function createMorRoom() {
-    
-    let name = $("#newGroopName").val()
-    let uName = "צריך משתנה לזה"
-    const d = new Date();
-    let time = d.toString();
-    let data = {
-        "roomName": name,
-        "guid": uName + time
+    if($("#newGroopName").val()!==""){
+        let name = $("#newGroopName").val()
+        $("#newGroopName").val()
+        let uName = "צריך משתנה לזה"
+        const d = new Date();
+        let time = d.toString();
+        let data = {
+            "roomName": name,
+            "guid": uName + time
+        }
+        $.post("http://localhost:3000/rooms", data, function (data, status) {})
+        gett()
+        
     }
-    $.post("http://localhost:3000/rooms", data, function (data, status) {})
 }
 
 

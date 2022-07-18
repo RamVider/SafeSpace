@@ -1,13 +1,16 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
 });
+let guid ="nhunijl"
 function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()
         let user = $("#uName").text()
-        let data = {}
+        let data = {
+            
+        }
         $.post("http://localhost:3000/takeDataFromChat", data, function (data, status) { })
-            $("#input").val("");
+        $("#input").val("");
     }
 }
 
