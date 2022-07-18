@@ -1,0 +1,26 @@
+/* h3{
+    border: 3px solid black;
+} */
+.front {
+    background: #07e7e7;
+    width: 400px;
+    height: 30px;
+    transition: 0.5s;
+    /* position: absolute; */
+    z-index: 1;
+    font-size: large;
+}
+.back {
+    background:white;
+    width: 400px;
+    height: 30px;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    font-size: large;
+}
+
+.content:hover .front {
+    display: none;
+}
+
