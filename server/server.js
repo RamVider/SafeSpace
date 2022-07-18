@@ -1,9 +1,7 @@
 const express = require('express')
 const cors = require('cors')
-const res = require('express/lib/response')
 const app = express()
 var bodyParser = require('body-parser');
-const { json } = require('express/lib/response');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
@@ -13,7 +11,9 @@ var chatFilePath = "/db/dbChat.txt";
 var chatRoomsFilePath = "/db/dbChatRooms.txt"
 
 app.listen(3000)
-
+app.get("/", function (req, res) {
+    res.send("server is up!!")
+})
 
 //files system
 function readFromFile(filePath) {
