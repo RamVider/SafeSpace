@@ -1,9 +1,7 @@
 const express = require('express')
 const cors = require('cors')
-const res = require('express/lib/response')
 const app = express()
 var bodyParser = require('body-parser');
-const { json } = require('express/lib/response');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
@@ -13,7 +11,9 @@ var chatFilePath = "/db/dbChat.txt";
 var chatRoomsFilePath = "/db/dbChatRooms.txt"
 
 app.listen(3000)
-
+app.get("/", function (req, res) {
+    res.send("server is up!!")
+})
 
 //files system
 function readFromFile(filePath) {
@@ -105,6 +105,9 @@ function isUserNameExist(newUser, users) {
 app.get('/usersToRoomsPage', function (req, res) {
     res.send(readFromFile(usersFilePath))
 })
+app.get("/roomsToRoomsPage",function(req,res){
+    res.send(readFromFile(chatRoomsFilePath))
+})
 app.post('/rooms', function (req, res) {
     let text = [];
     let db = readFromFile(chatRoomsFilePath)
@@ -123,7 +126,7 @@ function addChatToDB(db, text, body) {
 app.get("/dataToChat", function (req, res) {
     res.send(readFromFile(chatFilePath))
 })
-app.post("/rooms", function (req, res) {
+app.post("/sendMesegeToDB", function (req, res) {
     console.log("enter")
     let text = [];
     let db = readFromFile(chatFilePath)
