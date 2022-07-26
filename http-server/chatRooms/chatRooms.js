@@ -32,6 +32,7 @@ function createUsersInHtml(users) {
     document.getElementById("usersContainer").innerHTML = ""
     for (let i = 0; i < users.length; i++) {
         if (users[i].userName !== loggedUser) {
+            //בשורה 39 יש באג לא מובן אפשר הסבר?
             let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                         <div class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
@@ -55,8 +56,8 @@ function createRoomsInHtml(rooms) {
             container += div;
         } else if (room.addressee === userName) {
             let div = `<div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                            <div class="senderSlot" onclick="goToChat(${room.guid})">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  onclick="goToChat(${room.guid})"">
+                            <div class="senderSlot" >
                                 ${room.sender}
                             </div>
                         </div>
@@ -74,6 +75,7 @@ function createPrivateChat(addressee) {
         "guid": addressee + "+" + loggedUser,
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
+    alert("הבקשה נשלחה")
     //ישלח לחלק בדטה בייס 
     //מהדטה בייס ישלח לאיש השני
     //לאיש השני יהיה כפתור קטן ליד השם של השולח
@@ -88,7 +90,6 @@ function goToChat(guid) {
 function createRoom() {
     if ($("#newGroopName").val() !== "") {
         let name = $("#newGroopName").val()
-        $("#newGroopName").val()
         const d = new Date();
         let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
