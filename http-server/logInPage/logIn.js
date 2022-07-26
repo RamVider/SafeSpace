@@ -12,7 +12,6 @@ function login() {
     $.post(consts.url + "login", user, function (data, status) {
     if (status == "success") {
             if(data.status === "user confirmed"){
-                debugger;
                 saveUserToSession(data.userName);
                 location.href = "/chatRooms/chatRooms.html";
             }

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -12,7 +12,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <!-- <li class="active"><a href="/homePage/homePage.html">Home</a></li> -->
-          <li><a href="/chatRooms/chatRooms.html">חדרי צ'אט</a></li>
+          <!-- <li><a href="/chatRooms/chatRooms.html">חדרי צ'אט</a></li>
           <li><a href="/aboutUs/aboutUs.html">אודות</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
@@ -24,7 +24,7 @@
       </div>
     </div>
   </nav>
-=======
+======= --> 
 <style>
   .navbar {
     position: fixed;
@@ -46,12 +46,16 @@
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="/homePage/homePage.html">Home</a></li> -->
         <li><a href="/chatRooms/chatRooms.html">חדרי צ'אט</a></li>
+        <li><a href="/infoPage/infoPage.html">מידע על טיפולים</a></li>
         <li><a href="/aboutUs/aboutUs.html">אודות</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right pull-right">
-        <li><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a></li>
+        <li id="loginLabel"><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a>
+        </li>
+        <li id="logoutLabel" class="hidden"><a onclick="logout()">Hi <span id="userName"></span>&nbsp;<span
+              class="glyphicon glyphicon-log-out"></span> התנתק</a></li>
       </ul>
     </div>
   </div>
 </nav>
->>>>>>> a6896ecf101625657cdfaf76605642f9fef63f81
+

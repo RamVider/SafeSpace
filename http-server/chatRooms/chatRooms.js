@@ -11,7 +11,7 @@ isUserConnected();
 
 function gett() {
     $.get(consts.url + "roomsToRoomsPage", function (data, status) {
-        if(data!==""){
+        if (data !== "") {
             rooms = JSON.parse(data)
             creatRoomsInHtml(rooms)
         }
@@ -26,20 +26,20 @@ function gett() {
     })
 }
 
-
-
-
 function creatNamesInHtml(users) {
+    loggedUser = readUserFromSession();
     document.getElementById("usersContainer").innerHTML = ""
     for (let i = 0; i < users.length; i++) {
-        let div = `<div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot">
-                            ${users[i].uName}
-                        </div>
-                    </div>
-                </div>`;
-        $("#usersContainer").append(div)
+        if (users[i].userName !== loggedUser) {
+            let div = `<div class="row">
+                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                               <div class="nameSlot">
+                                   ${users[i].userName}
+                               </div>
+                           </div>
+                       </div>`;
+            $("#usersContainer").append(div)
+        }
     }
 }
 

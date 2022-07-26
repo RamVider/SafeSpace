@@ -8,29 +8,23 @@ function headerSetup() {
     }
 }
 function isUserConnected() {
-    debugger;
     var loggedUser = readUserFromSession();
     if (loggedUser) {
         console.log(loggedUser);
+        saveUserToSession(loggedUser)
     }
-    else{
+    else {
         location.href = "/logInPage/logIn.html"
     }
-
-    // $.get(consts.url + "isUserConnected?userName=" + loggedUser, function (data, status) {
-    //     if (data) {
-    //         console.log(data);
-    //     }
-    //     else {
-    //         location.href = "/logInPage/logIn.html"
-    //     }
-    // })
 }
 function saveUserToSession(userName) {
-    debugger;
     sessionStorage.setItem('loggedUser', userName);
+    sessionStorage.setItem('expiration', moment());
 }
 function readUserFromSession() {
+    if (moment().diff(moment(sessionStorage.getItem('expiration')),'minutes') >= 20) {
+        return "";
+    }
     return sessionStorage.getItem('loggedUser');
 }
 function logout(params) {

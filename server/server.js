@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 var bodyParser = require('body-parser');
-var moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
@@ -44,7 +43,7 @@ app.post('/login', function (req, res) {
             if (resUser.password === req.body.password) {
                 result = {
                     status: "user confirmed",
-                    userName : resUser.userName
+                    userName: resUser.userName
                 };
             }
             else {
@@ -176,20 +175,20 @@ app.post("/connectUser", function (req, res) {
 app.get("/isUserConnected", function (req, res) {
     console.log(req)
     if (req) {
-        res.send(isUserConnected(req.userName))
+        // res.send(isUserConnected(req.userName))
     }
     res.send(false);
 })
-function isUserConnected(user) {
-    let isConnected = false;
-    let resUser = connectedUsers.find(function (connectedUser) {
-        return user.connectedUser.toLowerCase() === user.toLowerCase();
-    });
-    if (resUser !== undefined && moment().diff(resUser.userExpiration, 'minutes') < 20) {
-        isConnected = true;
-    }
-    return isConnected;
-}
+// function isUserConnected(user) {
+//     let isConnected = false;
+//     let resUser = connectedUsers.find(function (connectedUser) {
+//         return user.connectedUser.toLowerCase() === user.toLowerCase();
+//     });
+//     if (resUser !== undefined && moment().diff(resUser.userExpiration, 'minutes') < 20) {
+//         isConnected = true;
+//     }
+//     return isConnected;
+// }
 function isUserExist(userName) {
     let users = getAllUsers();
     let result = false;
