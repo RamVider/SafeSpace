@@ -1,4 +1,5 @@
-<nav class="navbar navbar-inverse">
+<!-- <<<<<<< HEAD
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -11,12 +12,50 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <!-- <li class="active"><a href="/homePage/homePage.html">Home</a></li> -->
-          <li><a href="/chatRooms/chatRooms.html">חדרי צ'אט</a></li>
+          <!-- <li><a href="/chatRooms/chatRooms.html">חדרי צ'אט</a></li>
           <li><a href="/aboutUs/aboutUs.html">אודות</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
-          <li><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a></li>
+          <li id="loginLabel"><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a>
+          </li>
+          <li id="logoutLabel" class="hidden"><a onclick="logout()">Hi <span id="userName"></span>&nbsp;<span
+                class="glyphicon glyphicon-log-out"></span> התנתק</a></li>
         </ul>
       </div>
     </div>
   </nav>
+======= --> 
+<style>
+  .navbar {
+    position: fixed;
+    width: 100%;
+  }
+
+</style>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/homePage/homePage.html">Safe Space</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <!-- <li class="active"><a href="/homePage/homePage.html">Home</a></li> -->
+        <li><a href="/chatRooms/chatRooms.html">חדרי צ'אט</a></li>
+        <li><a href="/infoPage/infoPage.html">מידע על טיפולים</a></li>
+        <li><a href="/aboutUs/aboutUs.html">אודות</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right pull-right">
+        <li id="loginLabel"><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a>
+        </li>
+        <li id="logoutLabel" class="hidden"><a onclick="logout()">Hi <span id="userName"></span>&nbsp;<span
+              class="glyphicon glyphicon-log-out"></span> התנתק</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

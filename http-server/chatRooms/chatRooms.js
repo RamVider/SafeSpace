@@ -1,12 +1,14 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
 });
 var rooms = [];
 
 var users = [];
 
-var uName = "fix_this";
-
+isUserConnected();
 
 function init() {
     $.get(consts.url + "getChatRooms", function (data, status) {
@@ -25,20 +27,20 @@ function init() {
     })
 }
 
-
-
-
 function createUsersInHtml(users) {
+    loggedUser = readUserFromSession();
     document.getElementById("usersContainer").innerHTML = ""
     for (let i = 0; i < users.length; i++) {
-        let div = `<div class="row">
+        if (users[i].userName !== loggedUser) {
+            let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                         <div class="nameSlot" onclick="createPrivateChat(${users[i].uName})">
                             ${users[i].uName}
                         </div>
                     </div>
                 </div>`;
-        $("#usersContainer").append(div)
+            $("#usersContainer").append(div)
+        }
     }
 }
 
@@ -51,8 +53,8 @@ function createRoomsInHtml(rooms) {
                             ${room.roomName}
                         </div>`;
             container += div;
-        }else if(room.addressee===uName){
-            let div=`<div class="row">
+        } else if (room.addressee === uName) {
+            let div = `<div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                             <div class="senderSlot" onclick="goToChat(${room.guid})">
                                 ${room.sender}
@@ -67,7 +69,7 @@ function createRoomsInHtml(rooms) {
 
 function createPrivateChat(addressee) {
     let data = {
-        "sender":uName,
+        "sender": uName,
         "addressee": addressee,
         "guid": addressee + "+" + uName,
     }
@@ -101,7 +103,7 @@ function createRoom() {
 
 init()
 setInterval(function () {
-     init()
+    init()
 }, 2000)
 
 

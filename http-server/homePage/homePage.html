@@ -8,48 +8,60 @@
   <link rel="stylesheet" href="homePage.css">
 
   <style>
-    /* body {
-  background-image: url('https://img.freepik.com/premium-vector/abstract-pixel-rain-background_23-2148380458.jpg?w=2000');
-} */
+    .parallax {
+      background-image: url("https://opuskinetic.org/wp-content/uploads/2020/01/tech.jpeg");
+      height: 590px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1700px 700px;
+    }
 
+    img {
+      border-radius: 50%;
+    }
 
-h1 {
-  font-size: 25px;
-}
-h2 {
-  text-align: justify;
-  text-justify: inter-word;
-  font-size: 20px;
-  background-color: white;
-  opacity: 0.6;
-  color: black;
-}
+    h1 {
+      text-align: center;
+      text-justify: inter-word;
+      font-size: 25px;
+      line-height: 1.2;
+      font-family: "Times New Roman", Times, serif;
+      text-shadow: 0.5px 0.5px;
+      color: black;
+    }
   </style>
 </head>
 
 <body>
   <div id="header"></div>
+  <div id="background-color"></div>
+  <div class="parallax"></div>
   <div class="container">
     <div class="row">
-      <div class="col-sm-5 card pull-right" id="whatYouDoInThePage" dir="rtl" style="color: white;">
-        <h1>האתר יעבוד כך:</h1>
-        <h2>
+      <div class="col-sm-6 col-sm-offset-3 card" id="whatYouDoInThePage" dir="rtl" style="color: white;">
+        <h1>
+          <br><br>
           בכניסה לאתר, בעמוד הבית- תהיינה שתי אופציות;
-          </br>
+          <br><br>
           לכאלה שמעוניינים בשיחה דחופה או חד פעמית עם פסיכולוג מקצועי-
           יינתן כפתור ה-SOS, שיהיה זמין בעמוד הבית ללא הרשמה.
           ברגע שיהיה זיהוי של לחיצה על הכפתור בצד של אנשי המקצוע- איש המקצוע הראשון שיהיה פנוי יפתח את הפנייה ויוכל
           לשוחח עם המטופל דרך הטלפון באתר, שניהם באנונימיות מוחלטת.
-          </br>
+          <br>
           ולכאלה שמעוניינים בסדרת טיפולים או המשך לטיפול- תהיה אופציה להירשם לאתר, למלא פרטים (לצורך אבטחה בסיסית בלבד),
           ולבחור את הפסיכולוג שהם מעוניינים בטיפול אצלו לפי נושאי ההתמחות, הוותק והניסיון שלו- שיופיעו בתיאור
           (שהפסיכולוג ימלא בהרשמה שלו לאתר), מתחת לשם ולתמונת הפרופיל שלו.
           ברגע שהפסיכולוג יזהה קריאה לסדרת טיפולים או להמשך טיפול- הוא ייקח את הפרטים הבסיסיים של אותו מטופל ויוכל לתאם
           איתו פגישה להמשך טיפול או לסדרת טיפולים.
-        </h2>
+          <br><br><br><br><br><br>
+        </h1>
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
       <script src="/commonFiles/const.js"></script>
+      <script src="/commonFiles/service.js"></script>
       <script src="homePage.js"></script>
 </body>
+
 </html>
