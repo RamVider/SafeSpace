@@ -34,8 +34,8 @@ function createUsersInHtml(users) {
         if (users[i].userName !== loggedUser) {
             let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot" onclick="createPrivateChat(${users[i].uName})">
-                            ${users[i].uName}
+                        <div class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
+                            ${users[i].userName}
                         </div>
                     </div>
                 </div>`;
@@ -53,7 +53,7 @@ function createRoomsInHtml(rooms) {
                             ${room.roomName}
                         </div>`;
             container += div;
-        } else if (room.addressee === uName) {
+        } else if (room.addressee === userName) {
             let div = `<div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
                             <div class="senderSlot" onclick="goToChat(${room.guid})">
@@ -69,9 +69,9 @@ function createRoomsInHtml(rooms) {
 
 function createPrivateChat(addressee) {
     let data = {
-        "sender": uName,
+        "sender": loggedUser,
         "addressee": addressee,
-        "guid": addressee + "+" + uName,
+        "guid": addressee + "+" + loggedUser,
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
     //ישלח לחלק בדטה בייס 
@@ -93,7 +93,7 @@ function createRoom() {
         let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
             "roomName": name,
-            "guid": uName + "_" + time
+            "guid": userName + "_" + time
         }
         $.post(consts.url + "createRoom", data, function (data, status) { })
         init()
@@ -104,7 +104,7 @@ function createRoom() {
 init()
 setInterval(function () {
     init()
-}, 2000)
+}, 5000)
 
 
 //pop up js

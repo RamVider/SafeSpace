@@ -99,7 +99,7 @@ function isUserNameExist(newUser, users) {
     let result = false;
     if (typeof users == "object" && users.length > 0) {
         let resUser = users.find(function (user) {
-            return user.uName === newUser.uName
+            return user.userName === newUser.userName
         })
         if (resUser !== undefined) {
             result = true
