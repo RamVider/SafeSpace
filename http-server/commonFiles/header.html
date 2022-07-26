@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -15,7 +15,10 @@
           <li><a href="/aboutUs/aboutUs.html">אודות</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
-          <li><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a></li>
+          <li id="loginLabel"><a href="/logInPage/logIn.html"><span class="glyphicon glyphicon-log-in"></span> התחבר</a>
+          </li>
+          <li id="logoutLabel" class="hidden"><a onclick="logout()">Hi <span id="userName"></span>&nbsp;<span
+                class="glyphicon glyphicon-log-out"></span> התנתק</a></li>
         </ul>
       </div>
     </div>

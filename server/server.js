@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 var bodyParser = require('body-parser');
+var moment = require('moment');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
@@ -31,21 +32,20 @@ function saveToFile(data, filePath) {
 //files system - END
 
 //login page
-function isUserExistForLogin(db, userEmail) {
 
-}
 app.post('/login', function (req, res) {
-    let users = [];
+    let users = getAllUsers();
     let result = "user don't exist";
-    let db = readFromFile(usersFilePath)
-    if (db !== "") {
-        users = JSON.parse(db);
+    if (users !== undefined) {
         let resUser = users.find(function (user) {
             return user.email.toLowerCase() === req.body.email.toLowerCase();
         });
         if (resUser !== undefined) {
             if (resUser.password === req.body.password) {
-                result = "user confirmed";
+                result = {
+                    status: "user confirmed",
+                    userName : resUser.userName
+                };
             }
             else {
                 result = "wrong password";
@@ -61,6 +61,15 @@ app.post('/signin', function (req, res) {
     console.log(users)
     res.send(result)
 });
+
+function getAllUsers() {
+    let users = undefined;
+    let db = readFromFile(usersFilePath)
+    if (db !== "") {
+        users = JSON.parse(db);
+    }
+    return users;
+}
 function addUsersToDB(db, users, body) {
     if (db !== "") {
         users = JSON.parse(db)
@@ -105,7 +114,7 @@ function isUserNameExist(newUser, users) {
 app.get('/usersToRoomsPage', function (req, res) {
     res.send(readFromFile(usersFilePath))
 })
-app.get("/roomsToRoomsPage",function(req,res){
+app.get("/roomsToRoomsPage", function (req, res) {
     res.send(readFromFile(chatRoomsFilePath))
 })
 app.post('/rooms', function (req, res) {
@@ -118,7 +127,7 @@ function addChatToDB(db, text, body) {
         text = JSON.parse(db)
     }
     text.push(body);
-    saveToFile(JSON.stringify(text),chatRoomsFilePath)
+    saveToFile(JSON.stringify(text), chatRoomsFilePath)
 }
 //chat rooms page -END
 
@@ -140,3 +149,58 @@ function addMessageToDB(db, text, body) {
     saveToFile(JSON.stringify(text), chatFilePath)
 }
 //Chats -END
+
+//authentication
+var connectedUsers = [];
+app.post("/connectUser", function (req, res) {
+    console.log("user:" + req.body)
+    let result = false;
+    if (isUserExist(req.body)) {
+        let connectedUser = connectedUsers.find(function (user) {
+            return user.connectedUser.toLowerCase() === req.body.toLowerCase();
+        });
+        if (connectedUser !== undefined) {
+            connectedUser["userExpiration"] = new Date();
+        }
+        else {
+            connectedUser = {
+                "connectedUser": req.body,
+                "userExpiration": new Date()
+            }
+            connectedUser.push(connectedUser)
+        };
+        result = true;
+    }
+    res.send(result);
+})
+app.get("/isUserConnected", function (req, res) {
+    console.log(req)
+    if (req) {
+        res.send(isUserConnected(req.userName))
+    }
+    res.send(false);
+})
+function isUserConnected(user) {
+    let isConnected = false;
+    let resUser = connectedUsers.find(function (connectedUser) {
+        return user.connectedUser.toLowerCase() === user.toLowerCase();
+    });
+    if (resUser !== undefined && moment().diff(resUser.userExpiration, 'minutes') < 20) {
+        isConnected = true;
+    }
+    return isConnected;
+}
+function isUserExist(userName) {
+    let users = getAllUsers();
+    let result = false;
+    if (users !== undefined) {
+        let resUser = users.find(function (user) {
+            return user.userName.toLowerCase() === req.body.toLowerCase();
+        });
+        if (resUser !== undefined) {
+            result = true;
+        }
+    }
+    return result;
+}
+//authentication - END

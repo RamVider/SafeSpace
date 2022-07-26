@@ -1,10 +1,13 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
 });
 var rooms = [];
 
 var users = [];
-
+isUserConnected();
 
 function gett() {
     $.get(consts.url + "roomsToRoomsPage", function (data, status) {
