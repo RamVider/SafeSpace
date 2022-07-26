@@ -28,7 +28,7 @@ function readUserFromSession() {
     }
     return sessionStorage.getItem('loggedUser');
 }
-function logout(params) {
+function logout() {
     sessionStorage.clear();
     location.href = "/homePage/homePage.html"
 }
