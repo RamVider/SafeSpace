@@ -1,6 +1,6 @@
 var loggedUser = "";
 function headerSetup() {
-    var loggedUser = readUserFromSession()
+    loggedUser = readUserFromSession()
     if (loggedUser) {
         $("#logoutLabel").removeClass('hidden');
         $("#loginLabel").addClass('hidden');
@@ -14,6 +14,7 @@ function isUserConnected() {
         saveUserToSession(loggedUser)
     }
     else {
+        sessionStorage.clear();
         location.href = "/logInPage/logIn.html"
     }
 }
