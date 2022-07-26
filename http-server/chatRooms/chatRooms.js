@@ -32,10 +32,11 @@ function createUsersInHtml(users) {
     document.getElementById("usersContainer").innerHTML = ""
     for (let i = 0; i < users.length; i++) {
         if (users[i].userName !== loggedUser) {
+            //בשורה 39 יש באג לא מובן אפשר הסבר?
             let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot" onclick="createPrivateChat(${users[i].uName})">
-                            ${users[i].uName}
+                        <div class="nameSlot" onclick="createPrivateChat(${users[i].userName})">
+                            ${users[i].userName}
                         </div>
                     </div>
                 </div>`;
@@ -53,10 +54,10 @@ function createRoomsInHtml(rooms) {
                             ${room.roomName}
                         </div>`;
             container += div;
-        } else if (room.addressee === uName) {
+        } else if (room.addressee === userName) {
             let div = `<div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                            <div class="senderSlot" onclick="goToChat(${room.guid})">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  onclick="goToChat(${room.guid})"">
+                            <div class="senderSlot" >
                                 ${room.sender}
                             </div>
                         </div>
@@ -69,11 +70,12 @@ function createRoomsInHtml(rooms) {
 
 function createPrivateChat(addressee) {
     let data = {
-        "sender": uName,
+        "sender": userName,
         "addressee": addressee,
-        "guid": addressee + "+" + uName,
+        "guid": addressee + "+" + userName,
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
+    alert("הבקשה נשלחה")
     //ישלח לחלק בדטה בייס 
     //מהדטה בייס ישלח לאיש השני
     //לאיש השני יהיה כפתור קטן ליד השם של השולח
@@ -88,12 +90,11 @@ function goToChat(guid) {
 function createRoom() {
     if ($("#newGroopName").val() !== "") {
         let name = $("#newGroopName").val()
-        $("#newGroopName").val()
         const d = new Date();
         let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
             "roomName": name,
-            "guid": uName + "_" + time
+            "guid": userName + "_" + time
         }
         $.post(consts.url + "createRoom", data, function (data, status) { })
         init()
