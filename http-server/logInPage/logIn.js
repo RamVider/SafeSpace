@@ -9,10 +9,11 @@ function login() {
     }
 
 
-    $.post(consts.url + `login`, user, function (data, status) {
+    $.post(consts.url + "login", user, function (data, status) {
     if (status == "success") {
-            if(data === "user confirmed"){
-                location.href = "/chatRooms/chatRooms.html"
+            if(data.status === "user confirmed"){
+                saveUserToSession(data.userName);
+                location.href = "/chatRooms/chatRooms.html";
             }
             else{
                 alert(data)
@@ -32,7 +33,7 @@ function signIn() {
         name: name,
         password: pass,
         age: age,
-        uName: uName,
+        userName: uName,
         email: email,
         phone: phone
     };

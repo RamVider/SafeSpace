@@ -1,5 +1,8 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
 });
 var guid = window.location.search.split('?')[1].split('=')[1]
 function sendMessage() {
@@ -50,4 +53,4 @@ setInterval(function () {
             $("#messages").html(messageCOntainer)
         }
     })
-}, 500);
+}, 5000);
