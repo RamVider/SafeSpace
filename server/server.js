@@ -102,13 +102,18 @@ function isUserNameExist(newUser, users) {
 //login page -END
 
 //chat rooms page
-app.get('/usersToRoomsPage', function (req, res) {
+app.get('/getUsers', function (req, res) {
     res.send(readFromFile(usersFilePath))
 })
-app.get("/roomsToRoomsPage",function(req,res){
+app.get("/getChatRooms",function(req,res){
     res.send(readFromFile(chatRoomsFilePath))
 })
-app.post('/rooms', function (req, res) {
+app.post('/createRoom', function (req, res) {
+    let text = [];
+    let db = readFromFile(chatRoomsFilePath)
+    let result = addChatToDB(db, text, req.body)
+})
+app.post('/createPrivateChat',function(req,res){
     let text = [];
     let db = readFromFile(chatRoomsFilePath)
     let result = addChatToDB(db, text, req.body)

@@ -5,18 +5,20 @@ var rooms = [];
 
 var users = [];
 
+var uName = "fix_this";
 
-function gett() {
-    $.get(consts.url + "roomsToRoomsPage", function (data, status) {
-        if(data!==""){
+
+function init() {
+    $.get(consts.url + "getChatRooms", function (data, status) {
+        if (data !== "") {
             rooms = JSON.parse(data)
-            creatRoomsInHtml(rooms)
+            createRoomsInHtml(rooms)
         }
     })
-    $.get(consts.url + "usersToRoomsPage", function (data, status) {
+    $.get(consts.url + "getUsers", function (data, status) {
         if (status === "success") {
             users = JSON.parse(data)
-            creatNamesInHtml(users)
+            createUsersInHtml(users)
         } else {
             console.log("זה לא עובד")
         }
@@ -26,12 +28,12 @@ function gett() {
 
 
 
-function creatNamesInHtml(users) {
+function createUsersInHtml(users) {
     document.getElementById("usersContainer").innerHTML = ""
     for (let i = 0; i < users.length; i++) {
         let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot">
+                        <div class="nameSlot" onclick="createPrivateChat(${users[i].uName})">
                             ${users[i].uName}
                         </div>
                     </div>
@@ -40,43 +42,67 @@ function creatNamesInHtml(users) {
     }
 }
 
-function creatRoomsInHtml(rooms) {
+function createRoomsInHtml(rooms) {
     let container = ""
-    for (let i = 0; i < rooms.length; i++) {
-        let div = `
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat('${rooms[i].guid}')" >
-                        ${rooms[i].roomName}
-                    </div>`;
-        container += div;
-    }
+    rooms.forEach(room => {
+        if (room.roomName) {
+            let div = `
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat('${room.guid}')" >
+                            ${room.roomName}
+                        </div>`;
+            container += div;
+        }else if(room.addressee===uName){
+            let div=`<div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                            <div class="senderSlot" onclick="goToChat(${room.guid})">
+                                ${room.sender}
+                            </div>
+                        </div>
+                    </div>`
+            $("#privateChatContainer").append(div)
+        }
+    })
     $("#roomsContainer").html(container)
 }
 
+function createPrivateChat(addressee) {
+    let data = {
+        "sender":uName,
+        "addressee": addressee,
+        "guid": addressee + "+" + uName,
+    }
+    $.post(consts.url + "createPrivateChat", data, function (data, status) { })
+    //ישלח לחלק בדטה בייס 
+    //מהדטה בייס ישלח לאיש השני
+    //לאיש השני יהיה כפתור קטן ליד השם של השולח
+    // משם זה יקח את השולח והמקבל לצאט פרטי
+}
 
-gett()
 
 function goToChat(guid) {
     location.href = "/chat/chat.html?guid=" + guid;
 }
 
-function createMorRoom() {
+function createRoom() {
     if ($("#newGroopName").val() !== "") {
         let name = $("#newGroopName").val()
         $("#newGroopName").val()
-        let uName = "fix_this"
         const d = new Date();
         let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
             "roomName": name,
             "guid": uName + "_" + time
         }
-        $.post(consts.url + "rooms", data, function (data, status) { })
-        gett()
+        $.post(consts.url + "createRoom", data, function (data, status) { })
+        init()
 
     }
 }
 
-
+init()
+setInterval(function () {
+     init()
+}, 2000)
 
 
 //pop up js
