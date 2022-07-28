@@ -1,15 +1,23 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
 });
-let guid ="nhunijl"
+var guid = window.location.search.split('?')[1].split('=')[1]
 function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()
         let user = $("#uName").text()
+        const d = new Date();
+        let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
-            
+            "input": input,
+            "user": user,
+            "guid": guid,
+            "time": time
         }
-        $.post("http://localhost:3000/takeDataFromChat", data, function (data, status) { })
+        $.post(consts.url + "sendMesegeToDB", data, function (data, status) { })
         $("#input").val("");
     }
 }
@@ -23,24 +31,26 @@ $(function () {
 });
 
 setInterval(function () {
-    $.get("http://localhost:3000/dataToChat", function (data, status) {
-        if (status === "success") {
+    $.get(consts.url + "dataToChat", function (data, status) {
+        if (status === "success" && data !== "") {
             let message = JSON.parse(data)
             let messageCOntainer = ""
-            for (let i = 0; i < message.length; i++) {
-                let div = `
-                    <div class="mesegeContainer">
-                        <p class="uNameTitel">${message[i].user}</p>
-                        <h3>${message[i].input}</h3>
-                    </div>
-                    </br>
-                    </br>
-                    </br>
-                `
-                messageCOntainer += div
-            }
+            message.forEach(function(message)  {
+                if (message.guid===guid) {
+
+                    let div = `
+                        <div class="mesegeContainer">
+                            <p class="uNameTitel">${message.user}</p>
+                            <h3>${message.input}</h3>
+                        </div>
+                        </br>
+                        </br>
+                        </br>
+                    `
+                    messageCOntainer += div
+                }
+            });
             $("#messages").html(messageCOntainer)
         }
     })
-}, 500);
-
+}, 5000);

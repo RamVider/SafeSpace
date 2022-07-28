@@ -6,47 +6,58 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/global-styles.css">
   <link rel="stylesheet" href="homePage.css">
+
+  <style>
+    .parallax {
+      background-image: url("https://sp.rmbl.ws/s8/1/x/h/c/Y/xhcYa.OvCc-small--.jpg");
+      height: 600px;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 1550px 650px;
+    }
+
+    h1 {
+      text-align: center;
+      text-justify: inter-word;
+      font-size: 25px;
+      line-height: 1.2;
+      font-family: "Times New Roman", Times, serif;
+      text-shadow: 0.5px 0.5px;
+      color: black;
+    }
+  </style>
 </head>
 
-<body>
+<body style="background-color:rgba(6, 133, 127, 0.375);">
   <div id="header"></div>
+  <div id="background-color"></div>
+  <div class="parallax"></div>
   <div class="container">
     <div class="row">
-      <div class="col-sm-5 card" id="whatYouDoInThePage" dir="rtl">
-        <h1>האתר יעבוד כך:</h1>
-        <h3>
+      <div class="col-sm-6 col-sm-offset-3 card" id="whatYouDoInThePage" dir="rtl" style="color: white;">
+        <h1>
+          <br><br>
           בכניסה לאתר, בעמוד הבית- תהיינה שתי אופציות;
-          </br>
+          <br><br>
           לכאלה שמעוניינים בשיחה דחופה או חד פעמית עם פסיכולוג מקצועי-
           יינתן כפתור ה-SOS, שיהיה זמין בעמוד הבית ללא הרשמה.
           ברגע שיהיה זיהוי של לחיצה על הכפתור בצד של אנשי המקצוע- איש המקצוע הראשון שיהיה פנוי יפתח את הפנייה ויוכל
           לשוחח עם המטופל דרך הטלפון באתר, שניהם באנונימיות מוחלטת.
-          </br>
+          <br>
           ולכאלה שמעוניינים בסדרת טיפולים או המשך לטיפול- תהיה אופציה להירשם לאתר, למלא פרטים (לצורך אבטחה בסיסית בלבד),
           ולבחור את הפסיכולוג שהם מעוניינים בטיפול אצלו לפי נושאי ההתמחות, הוותק והניסיון שלו- שיופיעו בתיאור
           (שהפסיכולוג ימלא בהרשמה שלו לאתר), מתחת לשם ולתמונת הפרופיל שלו.
           ברגע שהפסיכולוג יזהה קריאה לסדרת טיפולים או להמשך טיפול- הוא ייקח את הפרטים הבסיסיים של אותו מטופל ויוכל לתאם
           איתו פגישה להמשך טיפול או לסדרת טיפולים.
-        </h3>
-      </div>
-      <div class="col-sm-5 card" id="abutThePage">
-        <div dir="rtl">
-          <h1> אודות האתר </h1>
-          <h3>
-            האתר נבנה על ידי קבוצת סטארטאפיסטים שנה ב מהעיר לוד; יהודה פלק, פריאל סרור, מרים ווחידי,
-            אליה רם, אור טמייט, שילת ברנס, יונתן גימפל- והמדריך: רם וידר.
-            </br>
-            האתר נבנה במטרה לתת פתרון לבעיה שנפוצה אצל בני נוער, במיוחד לאחר תקופת הקורונה-
-            תקופה זו, המון בני נוער עברו משברים רבים בבית ומחוץ לבית והרגישו צורך להביע את עצמם, אך מכיוון שכל האנשים
-            היו באותו מצב, לא היה מי שיעזור לכולם- והמצב רק נהיה קשה יותר עם הזמן.
-            </br>
-            הפתרון שאנחנו מציעים באתר שלנו- אתר "safespace":
-            חיבור של בני נוער שזקוקים לטיפול פסיכולוגי מקצועי
-            לפסיכולוגים מקצועיים שיעבדו באתר במסגרת התנדבות.
-          </h3>
-        </div>
+          <br><br><br><br><br><br>
+        </h1>
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+      <script src="/commonFiles/const.js"></script>
+      <script src="/commonFiles/service.js"></script>
       <script src="homePage.js"></script>
 </body>
+
 </html>

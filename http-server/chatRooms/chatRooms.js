@@ -1,79 +1,112 @@
 $(function () {
     $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
 });
 var rooms = [];
 
 var users = [];
 
+isUserConnected();
 
-function gett() {
-    $.get("http://localhost:3000/roomsToRoomsPage", function (data, status) {
-        rooms=JSON.parse(data)
-        creatRoomsInHtml(rooms)
+function init() {
+    $.get(consts.url + "getChatRooms", function (data, status) {
+        if (data !== "") {
+            rooms = JSON.parse(data)
+            createRoomsInHtml(rooms)
+        }
     })
-    $.get("http://localhost:3000/usersToRoomsPage", function (data, status) {
+    $.get(consts.url + "getUsers", function (data, status) {
         if (status === "success") {
             users = JSON.parse(data)
-            creatNamesInHtml(users)
+            createUsersInHtml(users)
         } else {
             console.log("זה לא עובד")
         }
     })
 }
 
-
-
-
-function creatNamesInHtml(users) {
-    document.getElementById("usersContainer").innerHTML=""
+function createUsersInHtml(users) {
+    loggedUser = readUserFromSession();
+    let container = ""
     for (let i = 0; i < users.length; i++) {
-        let div = `<div class="row">
+        if (users[i].userName !== loggedUser) {
+            //בשורה 39 יש באג לא מובן אפשר הסבר?
+            let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot">
-                            ${users[i].uName}
+                        <div class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
+                            ${users[i].userName}
                         </div>
                     </div>
                 </div>`;
-        document.getElementById("usersContainer").innerHTML += div;
+            container+=div
+        }
     }
+    $("#loggedUsersContainer").html(container)
 }
 
-function creatRoomsInHtml(rooms) {
+function createRoomsInHtml(rooms) {
     let container = ""
-    for (let i = 0; i < rooms.length; i++) {
-        let div = `
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat(${rooms[i].guid})" >
-                        ${rooms[i].roomName}
-                    </div>`;
-        container += div;
-    }
+    rooms.forEach(room => {
+        if (room.roomName) {
+            let div = `
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat('${room.guid}')" >
+                            ${room.roomName}
+                        </div>`;
+            container += div;
+        } else if (room.addressee === userName) {
+            let div = `<div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  onclick="goToChat(${room.guid})"">
+                            <div class="senderSlot" >
+                                ${room.sender}
+                            </div>
+                        </div>
+                    </div>`
+            $("#privateChatContainer").append(div)
+        }
+    })
     $("#roomsContainer").html(container)
 }
 
-gett()
-
-function goToChat(guid) {
-   let url ="http://localhost:8080/chat/chat.html"+`?${guid}`
+function createPrivateChat(addressee) {
+    let data = {
+        "sender": loggedUser,
+        "addressee": addressee,
+        "guid": addressee + "+" + loggedUser,
+    }
+    $.post(consts.url + "createPrivateChat", data, function (data, status) { })
+    alert("הבקשה נשלחה")
+    //ישלח לחלק בדטה בייס 
+    //מהדטה בייס ישלח לאיש השני
+    //לאיש השני יהיה כפתור קטן ליד השם של השולח
+    // משם זה יקח את השולח והמקבל לצאט פרטי
 }
 
-function createMorRoom() {
-    if($("#newGroopName").val()!==""){
+
+function goToChat(guid) {
+    location.href = "/chat/chat.html?guid=" + guid;
+}
+
+function createRoom() {
+    if ($("#newGroopName").val() !== "") {
         let name = $("#newGroopName").val()
-        $("#newGroopName").val()
-        let uName = "צריך משתנה לזה"
         const d = new Date();
-        let time = d.toString();
+        let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
             "roomName": name,
-            "guid": uName + time
+            "guid": userName + "_" + time
         }
-        $.post("http://localhost:3000/rooms", data, function (data, status) {})
-        gett()
-        
+        $.post(consts.url + "createRoom", data, function (data, status) { })
+        init()
+
     }
 }
 
-
+init()
+setInterval(function () {
+    init()
+}, 5000)
 
 
 //pop up js
