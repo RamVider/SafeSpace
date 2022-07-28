@@ -29,6 +29,7 @@ function readUserFromSession() {
     return sessionStorage.getItem('loggedUser');
 }
 function logout() {
+    // $.post(consts.url + "deleteUserFromloggedUserDB", data, function (data, status) { })
     sessionStorage.clear();
     location.href = "/homePage/homePage.html"
 }

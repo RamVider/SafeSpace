@@ -29,7 +29,7 @@ function init() {
 
 function createUsersInHtml(users) {
     loggedUser = readUserFromSession();
-    document.getElementById("usersContainer").innerHTML = ""
+    let container = ""
     for (let i = 0; i < users.length; i++) {
         if (users[i].userName !== loggedUser) {
             //בשורה 39 יש באג לא מובן אפשר הסבר?
@@ -40,9 +40,10 @@ function createUsersInHtml(users) {
                         </div>
                     </div>
                 </div>`;
-            $("#usersContainer").append(div)
+            container+=div
         }
     }
+    $("#loggedUsersContainer").html(container)
 }
 
 function createRoomsInHtml(rooms) {
