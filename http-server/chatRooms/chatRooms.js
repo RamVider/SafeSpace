@@ -47,26 +47,28 @@ function createUsersInHtml(users) {
 }
 
 function createRoomsInHtml(rooms) {
-    let container = ""
+    let roomContainer = ""
+    let privateChatContainer=""
     rooms.forEach(room => {
         if (room.roomName) {
             let div = `
                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat('${room.guid}')" >
                             ${room.roomName}
                         </div>`;
-            container += div;
-        } else if (room.addressee === userName) {
+            roomContainer += div;
+        } else if (room.addressee === loggedUser) {
             let div = `<div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  onclick="goToChat(${room.guid})"">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nameSlot"  onclick="goToChat('${room.guid}')"">
                             <div class="senderSlot" >
                                 ${room.sender}
                             </div>
                         </div>
                     </div>`
-            $("#privateChatContainer").append(div)
+            privateChatContainer+=div
         }
     })
-    $("#roomsContainer").html(container)
+    $("#roomsContainer").html(roomContainer)
+    $("#privateChatContainer").html(privateChatContainer)
 }
 
 function createPrivateChat(addressee) {
@@ -106,8 +108,7 @@ function createRoom() {
 init()
 setInterval(function () {
     init()
-}, 5000)
-
+}, 500)
 
 //pop up js
 // Get the modal
