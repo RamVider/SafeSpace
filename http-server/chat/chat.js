@@ -17,7 +17,8 @@ function sendMessage() {
             "guid": guid,
             "time": time
         }
-        $.post(consts.url + "sendMesegeToDB", data, function (data, status) { })
+        $.post(consts.url + "sendMesegeToDB", data, function (data, status) {})
+        getMassegeFromChat()
         $("#input").val("");
     }
 }
@@ -30,7 +31,7 @@ $(function () {
     });
 });
 
-setInterval(function () {
+setInterval(function getMassegeFromChat() {
     $.get(consts.url + "dataToChat", function (data, status) {
         if (status === "success" && data !== "") {
             let message = JSON.parse(data)
@@ -54,3 +55,4 @@ setInterval(function () {
         }
     })
 }, 5000);
+getMassegeFromChat()
