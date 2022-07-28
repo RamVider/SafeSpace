@@ -29,20 +29,21 @@ function init() {
 
 function createUsersInHtml(users) {
     loggedUser = readUserFromSession();
-    document.getElementById("usersContainer").innerHTML = ""
+    let container = ""
     for (let i = 0; i < users.length; i++) {
         if (users[i].userName !== loggedUser) {
             //בשורה 39 יש באג לא מובן אפשר הסבר?
             let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot" onclick="createPrivateChat(${users[i].userName})">
+                        <div class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
                             ${users[i].userName}
                         </div>
                     </div>
                 </div>`;
-            $("#usersContainer").append(div)
+            container+=div
         }
     }
+    $("#loggedUsersContainer").html(container)
 }
 
 function createRoomsInHtml(rooms) {
@@ -70,9 +71,9 @@ function createRoomsInHtml(rooms) {
 
 function createPrivateChat(addressee) {
     let data = {
-        "sender": userName,
+        "sender": loggedUser,
         "addressee": addressee,
-        "guid": addressee + "+" + userName,
+        "guid": addressee + "+" + loggedUser,
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
     alert("הבקשה נשלחה")
@@ -105,7 +106,7 @@ function createRoom() {
 init()
 setInterval(function () {
     init()
-}, 2000)
+}, 5000)
 
 
 //pop up js
