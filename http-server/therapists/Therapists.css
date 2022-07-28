@@ -1,26 +1,78 @@
 /* h3{
     border: 3px solid black;
-} */
+}
+.content{
+    position: relative;
+}
 .front {
-    background: #07e7e7;
-    width: 400px;
+    background: #e7e7e7;
+    width: 300px;
     height: 30px;
     transition: 0.5s;
-    /* position: absolute; */
+    position: absolute;
     z-index: 1;
     font-size: large;
 }
 .back {
+    border: solid black 2px;
+    border-radius: 5px;
     background:white;
-    width: 400px;
+    width: 300px;
     height: 30px;
-    /* position: absolute; */
+    position: absolute;
     top: 0;
     left: 0;
     font-size: large;
+    transition-property: all;
+    transition-duration: 3s;
 }
 
 .content:hover .front {
     display: none;
-}
+
+} */
+
+
+
+
+
+
+body {
+    font: 600 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+    margin: 12px 0;
+  }
+  .card-container {
+    cursor: pointer;
+    height: 150px;
+    perspective: 600;
+    position: relative;
+    width: 150px;
+  }
+  .card {
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    width: 100%;
+  }
+  .card:hover {
+    transform: rotateY(180deg);
+  }
+  .card .side {
+    background-color: #e7e7e7;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+  }
+  .card .back {
+    background: #eaeaed;
+    color: #0087cc;
+    line-height: 150px;
+    text-align: center;
+    transform: rotateY(180deg);
+  }
+
 
