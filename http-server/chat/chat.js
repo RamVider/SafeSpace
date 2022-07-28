@@ -8,7 +8,7 @@ var guid = window.location.search.split('?')[1].split('=')[1]
 function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()
-        let user = $("#uName").text()
+        let user = loggedUser
         const d = new Date();
         let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
         let data = {
