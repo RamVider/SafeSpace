@@ -31,5 +31,5 @@ function readUserFromSession() {
 function logout() {
     // $.post(consts.url + "deleteUserFromloggedUserDB", data, function (data, status) { })
     sessionStorage.clear();
-    location.href = "/homePage/homePage.html"
+    location.href = "/"
 }
