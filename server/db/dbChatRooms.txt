@@ -1,0 +1,1 @@
+[{"roomName":"חדש","guid":"fix_this_2022_07_26T00:59:18"},{"sender":"Ramvider","addressee":"jd","guid":"jd+Ramvider"},{"sender":"Ramvider","addressee":"jd","guid":"jd+Ramvider"},{"roomName":"test","guid":"[object HTMLSpanElement]_2022_07_31T23:46:23"},{"roomName":"test2","guid":"Ramvider_2022_07_31T23:50:20"},{"roomName":"test3","guid":"Ramvider_2022_07_31T23:57:04"}]
