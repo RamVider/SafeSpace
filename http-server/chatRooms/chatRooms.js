@@ -79,6 +79,7 @@ function createPrivateChat(addressee) {
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
     alert("הבקשה נשלחה")
+    goToChat(addressee + "+" + loggedUser)
     //ישלח לחלק בדטה בייס 
     //מהדטה בייס ישלח לאיש השני
     //לאיש השני יהיה כפתור קטן ליד השם של השולח

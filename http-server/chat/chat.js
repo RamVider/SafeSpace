@@ -18,7 +18,7 @@ function sendMessage() {
             "time": time
         }
         $.post(consts.url + "sendMesegeToDB", data, function (data, status) {})
-        getMassegeFromChat()
+        getMassegeToChat()
         $("#input").val("");
     }
 }
@@ -29,7 +29,8 @@ $(function () {
         }
     });
 });
-function getMassegeFromChat() {
+function getMassegeToChat() {
+    console.log("gujhmn")
     $.get(consts.url + "dataToChat", function (data, status) {
         if (status === "success" && data !== "") {
             let message = JSON.parse(data)
@@ -41,9 +42,6 @@ function getMassegeFromChat() {
                             <p class="uNameTitel">${message.user}</p>
                             <h3>${message.input}</h3>
                         </div>
-                        </br>
-                        </br>
-                        </br>
                     `
                     messageCOntainer += div
                 }
@@ -51,5 +49,5 @@ function getMassegeFromChat() {
             $("#messages").html(messageCOntainer)
         }
     })}
-setInterval(getMassegeFromChat(), 5000);
-getMassegeFromChat()
+setInterval(getMassegeToChat(), 5000);
+getMassegeToChat()
