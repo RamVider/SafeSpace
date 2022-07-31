@@ -5,3 +5,6 @@ $(function () {
 }, 50);
 });
 
+function goToChat(guid) {
+  location.href = "/chat/chat.html?guid=" + guid;
+}

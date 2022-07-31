@@ -1,3 +1,9 @@
+$(function () {
+    $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
+});
 var userList = []
 var userInfo = []
 function login() {
