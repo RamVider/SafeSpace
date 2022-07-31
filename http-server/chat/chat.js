@@ -22,7 +22,6 @@ function sendMessage() {
         $("#input").val("");
     }
 }
-
 $(function () {
     $(document).keypress(function (event) {
         if ($("#input").is(":focus") && event.charCode == 13) {
@@ -30,15 +29,13 @@ $(function () {
         }
     });
 });
-
-setInterval(function getMassegeFromChat() {
+function getMassegeFromChat() {
     $.get(consts.url + "dataToChat", function (data, status) {
         if (status === "success" && data !== "") {
             let message = JSON.parse(data)
             let messageCOntainer = ""
             message.forEach(function(message)  {
                 if (message.guid===guid) {
-
                     let div = `
                         <div class="mesegeContainer">
                             <p class="uNameTitel">${message.user}</p>
@@ -53,6 +50,6 @@ setInterval(function getMassegeFromChat() {
             });
             $("#messages").html(messageCOntainer)
         }
-    })
-}, 5000);
+    })}
+setInterval(getMassegeFromChat(), 5000);
 getMassegeFromChat()
