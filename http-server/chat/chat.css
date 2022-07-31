@@ -44,5 +44,8 @@
     word-wrap: break-word; */
 }
 .chat-window{
-margin-top: 34px;
+    margin-top: 34px;
+}
+.color{
+    padding: 0px !important;
 }
