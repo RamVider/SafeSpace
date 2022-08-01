@@ -109,7 +109,7 @@ function createRoom() {
 init()
 setInterval(function () {
     init()
-}, 500)
+}, 60*1000*1.5)
 
 //pop up js
 // Get the modal
