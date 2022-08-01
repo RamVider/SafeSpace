@@ -4,17 +4,19 @@
   border-radius: 10%;
   font-size: 30px;
   background-color: white;
+  cursor: pointer;
 }
 
 .roomSlot {
   text-align: center;
+  cursor: pointer;
   height: 15vh;
-  border: 5px solid black;
   margin: 1%;
-  border-radius: 10%;
+  border-radius: 10px;
   font-size: 30px;
   color: #fefefe;
   background-color: rgb(57, 56, 56);
+  box-shadow: 2px 5px rgb(134, 134, 134);
 }
 
 /* pop up css */
@@ -51,12 +53,17 @@
   width: 30%;
 }
 
+#myBtn {
+  cursor: pointer;
+}
+
 /* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover,
