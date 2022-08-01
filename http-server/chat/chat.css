@@ -30,14 +30,14 @@
     margin-top: 5px;
     margin-bottom: 32px;
     padding-inline: 8px;
+    margin: 3px;
 }
 .chat-window{
     margin-top: 52px;
 }
 .usercolor{
-    background-color: rgb(254, 174, 54);
+    background-color: greenyellow;
 }
-
 .maxWidth{
     max-width: 80vh;
 }
@@ -53,8 +53,6 @@
     margin-left: -15px;
     margin-right: 0px;
 }
-
-
 @media screen and (max-width: 550px) {
     .chat-border{
         width: 100vh;

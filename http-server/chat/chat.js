@@ -4,8 +4,8 @@ $(function () {
         headerSetup()
     }, 50);
 });
-isUserConnected();
 var guid = window.location.search.split('?')[1].split('=')[1]
+isUserConnected();
 function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()
@@ -50,7 +50,7 @@ function getMassegeToChat() {
                     <div class="row">
                         <div class="col-sm-10  maxWidth mesegeContainer ${side}" >
                                 <p>${message.user}</p>
-                                <h3>${message.input}</h3>
+                                <h4 dir="rtl">${message.input}</h4>
                         </div>
                     </div>
                     `
