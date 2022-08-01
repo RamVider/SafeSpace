@@ -4,7 +4,7 @@
 .chat-border {
     border: 1px solid black;
     border-radius: 5px;
-    /* height: 95vh; */
+    margin-top: 30px;
 }
 .messages-area{
     height: 600px;
@@ -45,6 +45,10 @@
 .chat-window{
     margin-top: 52px;
 }
-.color{
-    padding: 0px !important;
+.usercolor{
+    background-color: rgb(254, 174, 54);
+}
+
+.maxWidth{
+    max-width: 80vh;
 }
