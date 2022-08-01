@@ -9,22 +9,22 @@
 .messages-area{
     height: 600px;
     /* height: 93vh; */
-    background-color: beige;
+    background-color: rgb(234, 234, 234);
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
 }
-.text-input{
+/* .text-input{ */
     /* bottom: 7px; */
     /* display: flex; */
     /* align-items: end; */
     /* position: absolute; */
     /* width: 103vh; */
-}
+/* } */
 .send-btn {
     bottom: 10px;
     border-radius: 50%;
-    background-color: #40c340;
+    background-color: #5dd65d;
     height: 35px;
     width: 47px;
 }
@@ -43,7 +43,7 @@
     padding-inline: 8px;
 }
 .chat-window{
-    margin-top: 34px;
+    margin-top: 50px;
 }
 .color{
     padding: 0px !important;
