@@ -14,13 +14,13 @@
     overflow: hidden;
     overflow-y: scroll;
 }
-.text-input{
+/* .text-input{ */
     /* bottom: 7px; */
     /* display: flex; */
     /* align-items: end; */
     /* position: absolute; */
     /* width: 103vh; */
-}
+/* } */
 .send-btn {
     bottom: 10px;
     border-radius: 50%;
