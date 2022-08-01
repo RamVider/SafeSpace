@@ -18,11 +18,10 @@ function sendMessage() {
             "time": time
         }
         $.post(consts.url + "sendMesegeToDB", data, function (data, status) {})
-        getMassegeFromChat()
+        getMassegeToChat()
         $("#input").val("");
     }
 }
-
 $(function () {
     $(document).keypress(function (event) {
         if ($("#input").is(":focus") && event.charCode == 13) {
@@ -30,29 +29,25 @@ $(function () {
         }
     });
 });
-
-setInterval(function getMassegeFromChat() {
+function getMassegeToChat() {
+    console.log("gujhmn")
     $.get(consts.url + "dataToChat", function (data, status) {
         if (status === "success" && data !== "") {
             let message = JSON.parse(data)
             let messageCOntainer = ""
             message.forEach(function(message)  {
                 if (message.guid===guid) {
-
                     let div = `
                         <div class="mesegeContainer">
                             <p class="uNameTitel">${message.user}</p>
                             <h3>${message.input}</h3>
                         </div>
-                        </br>
-                        </br>
-                        </br>
                     `
                     messageCOntainer += div
                 }
             });
             $("#messages").html(messageCOntainer)
         }
-    })
-}, 5000);
-getMassegeFromChat()
+    })}
+setInterval(getMassegeToChat, 5000);
+getMassegeToChat()

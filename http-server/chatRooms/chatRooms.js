@@ -40,7 +40,7 @@ function createUsersInHtml(users) {
                         </div>
                     </div>
                 </div>`;
-            container+=div
+            container += div
         }
     }
     $("#loggedUsersContainer").html(container)
@@ -48,7 +48,7 @@ function createUsersInHtml(users) {
 
 function createRoomsInHtml(rooms) {
     let roomContainer = ""
-    let privateChatContainer=""
+    let privateChatContainer = ""
     rooms.forEach(room => {
         if (room.roomName) {
             let div = `
@@ -64,7 +64,7 @@ function createRoomsInHtml(rooms) {
                             </div>
                         </div>
                     </div>`
-            privateChatContainer+=div
+            privateChatContainer += div
         }
     })
     $("#roomsContainer").html(roomContainer)
@@ -79,6 +79,7 @@ function createPrivateChat(addressee) {
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
     alert("הבקשה נשלחה")
+    goToChat(addressee + "+" + loggedUser)
     //ישלח לחלק בדטה בייס 
     //מהדטה בייס ישלח לאיש השני
     //לאיש השני יהיה כפתור קטן ליד השם של השולח
@@ -91,13 +92,13 @@ function goToChat(guid) {
 }
 
 function createRoom() {
+    closeModal()
     if ($("#newGroopName").val() !== "") {
         let name = $("#newGroopName").val()
-        const d = new Date();
-        let time = moment(d).format("YYYY_MM_DDTHH:mm:ss");
+        let time = moment().format("YYYY_MM_DDTHH:mm:ss");
         let data = {
             "roomName": name,
-            "guid": userName + "_" + time
+            "guid": loggedUser + "_" + time
         }
         $.post(consts.url + "createRoom", data, function (data, status) { })
         init()
@@ -108,25 +109,22 @@ function createRoom() {
 init()
 setInterval(function () {
     init()
-}, 500)
+}, 60*1000*1.5)
 
 //pop up js
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = $("#myModal")[0];
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var btn = $("#myBtn")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function () {
+function openModal() {
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+function closeModal() {
     modal.style.display = "none";
 }
 

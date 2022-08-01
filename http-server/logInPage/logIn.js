@@ -1,3 +1,9 @@
+$(function () {
+    $("#header").load("/commonFiles/header.html");
+    setTimeout(() => {
+        headerSetup()
+    }, 50);
+});
 var userList = []
 var userInfo = []
 function login() {
@@ -44,6 +50,9 @@ function signIn() {
         if (status == "success") {
             alert(data)
             console.log(data)
+            if(data=="user added"){
+                location.href = "/logInPage/logIn.html"
+            }
         }
     })
 }

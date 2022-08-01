@@ -4,7 +4,7 @@ function headerSetup() {
     if (loggedUser) {
         $("#logoutLabel").removeClass('hidden');
         $("#loginLabel").addClass('hidden');
-        $("#userName").text(loggedUser);
+        $("#loggedUserName").text(loggedUser);
     }
 }
 function isUserConnected() {
@@ -31,5 +31,5 @@ function readUserFromSession() {
 function logout() {
     // $.post(consts.url + "deleteUserFromloggedUserDB", data, function (data, status) { })
     sessionStorage.clear();
-    location.href = "/homePage/homePage.html"
+    location.href = "/"
 }

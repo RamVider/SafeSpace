@@ -1,7 +1,6 @@
 .uName{
     text-align: center;
 }
-
 .chat-border {
     border: 1px solid black;
     border-radius: 5px;
@@ -22,7 +21,6 @@
     /* position: absolute; */
     /* width: 103vh; */
 }
-
 .send-btn {
     bottom: 10px;
     border-radius: 50%;
@@ -30,19 +28,23 @@
     height: 35px;
     width: 47px;
 }
-
 .send-btn img {
     margin-left: 15px;
     margin-top: 7px;
     height: 20px;
 }
-
 .mesegeContainer{
     border: 1px solid black;
-    border-radius: 1%;
-    /* width: 80vh;
-    word-wrap: break-word; */
+    border-radius: 5px;
+    width: fit-content;
+    background-color: navajowhite;
+    margin-top: 5px;
+    margin-bottom: 32px;
+    padding-inline: 8px;
 }
 .chat-window{
-margin-top: 34px;
+    margin-top: 34px;
+}
+.color{
+    padding: 0px !important;
 }
