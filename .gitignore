@@ -2,7 +2,5 @@ server/db/dbChat.txt
 server/db/usersDB.txt
 server/db/dbChatRooms.txt
 server/db/logs.txt
-server/db/dbChatRooms.json
-server/db/dbChat.json
-server/db/usersDB.json
+
 server/db/logs.txt
