@@ -19,7 +19,7 @@ function init() {
     })
     $.get(consts.url + "getUsers", function (data, status) {
         if (status === "success") {
-            users = JSON.parse(data)
+            users = data
             createUsersInHtml(users)
         } else {
             console.log("זה לא עובד")
@@ -31,12 +31,12 @@ function createUsersInHtml(users) {
     loggedUser = readUserFromSession();
     let container = ""
     for (let i = 0; i < users.length; i++) {
-        if (users[i].userName !== loggedUser) {
+        if (users[i] !== loggedUser) {
             //בשורה 39 יש באג לא מובן אפשר הסבר?
             let div = `<div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
-                            ${users[i].userName}
+                        <div class="nameSlot" onclick="createPrivateChat('${users[i]}')">
+                            ${users[i]}
                         </div>
                     </div>
                 </div>`;
@@ -78,7 +78,7 @@ function createPrivateChat(addressee) {
         "guid": addressee + "+" + loggedUser,
     }
     $.post(consts.url + "createPrivateChat", data, function (data, status) { })
-    alert("הבקשה נשלחה")
+    popup("הבקשה נשלחה") 
     goToChat(addressee + "+" + loggedUser)
     //ישלח לחלק בדטה בייס 
     //מהדטה בייס ישלח לאיש השני

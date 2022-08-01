@@ -1,2 +1,4 @@
 server/db/dbChat.txt
 server/db/usersDB.txt
+server/db/dbChatRooms.txt
+server/db/logs.txt

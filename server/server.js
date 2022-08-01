@@ -46,6 +46,7 @@ app.post('/login', function (req, res) {
                     status: "user confirmed",
                     userName: resUser.userName
                 };
+                connectedUsers.push(resUser.userName);
             }
             else {
                 result = "wrong password";
@@ -62,6 +63,10 @@ app.post('/signin', function (req, res) {
     saveLog("signin_result: " + result)
     res.send(result)
 });
+app.get('/logout', function (req, res) {
+    disconnectUser(req.body);
+    res.send("user disconnected");
+})
 
 function getAllUsers() {
     let users = undefined;
@@ -117,7 +122,7 @@ function isUserNameExist(newUser, users) {
 
 //chat rooms page
 app.get('/getUsers', function (req, res) {
-    res.send(readFromFile(usersFilePath))
+    res.send(connectedUsers)
 })
 app.get("/getChatRooms", function (req, res) {
     res.send(readFromFile(chatRoomsFilePath))
@@ -162,29 +167,10 @@ function addMessageToDB(db, text, body) {
 
 //authentication
 var connectedUsers = [];
-app.post("/connectUser", function (req, res) {
-    saveLog("user:" + req.body)
+function disconnectUser(userName) {
+    connectedUsers.includes(userName);
+}
 
-
-    let result = false;
-    if (isUserExist(req.body)) {
-        let connectedUser = connectedUsers.find(function (user) {
-            return user.connectedUser.toLowerCase() === req.body.toLowerCase();
-        });
-        if (connectedUser !== undefined) {
-            connectedUser["userExpiration"] = new Date();
-        }
-        else {
-            connectedUser = {
-                "connectedUser": req.body,
-                "userExpiration": new Date()
-            }
-            connectedUser.push(connectedUser)
-        };
-        result = true;
-    }
-    res.send(result);
-})
 app.get("/isUserConnected", function (req, res) {
     saveLog(req)
     if (req) {

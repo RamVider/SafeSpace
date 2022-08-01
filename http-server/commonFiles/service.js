@@ -23,13 +23,19 @@ function saveUserToSession(userName) {
     sessionStorage.setItem('expiration', moment());
 }
 function readUserFromSession() {
-    if (moment().diff(moment(sessionStorage.getItem('expiration')),'minutes') >= 20) {
+    if (moment().diff(moment(sessionStorage.getItem('expiration')), 'minutes') >= 20) {
         return "";
     }
     return sessionStorage.getItem('loggedUser');
 }
 function logout() {
-    // $.post(consts.url + "deleteUserFromloggedUserDB", data, function (data, status) { })
+    $.get(consts.url + "logout?userName=" + loggedUser, function (data, status) {});
     sessionStorage.clear();
     location.href = "/"
+}
+function popup(text) {
+    var x = document.getElementById("snackbar");
+    x.innerText = text;
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }

@@ -22,7 +22,7 @@ function login() {
                 location.href = "/chatRooms/chatRooms.html";
             }
             else{
-                alert(data)
+                popup(data) 
             }
         }
     })
@@ -48,7 +48,7 @@ function signIn() {
     })
     $.post(consts.url + `signin`, user, function (data, status) {
         if (status == "success") {
-            alert(data)
+            popup(data) 
             console.log(data)
             if(data=="user added"){
                 location.href = "/logInPage/logIn.html"
