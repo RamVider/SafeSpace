@@ -9,6 +9,7 @@ const fs = require('fs')
 var usersFilePath = "db/usersDB.txt";
 var chatFilePath = "db/dbChat.txt";
 var chatRoomsFilePath = "db/dbChatRooms.txt"
+var logsFilePath = "db/logs.txt"
 
 app.listen(3000)
 app.get("/", function (req, res) {
@@ -57,7 +58,8 @@ app.post('/signin', function (req, res) {
     let users = [];
     let db = readFromFile(usersFilePath)
     let result = addUsersToDB(db, users, req.body)
-    console.log(users)
+    saveLog("signin_users: " + users)
+    saveLog("signin_result: " + result)
     res.send(result)
 });
 
@@ -72,6 +74,7 @@ function getAllUsers() {
 function addUsersToDB(db, users, body) {
     if (db !== "") {
         users = JSON.parse(db)
+        saveLog("addUsersToDB_users1: " + JSON.stringify(users))
         if (isUserEmailExist(body, users)) {
             return "user exist";
         }
@@ -80,6 +83,8 @@ function addUsersToDB(db, users, body) {
         }
     }
     users.push(body);
+    saveLog("addUsersToDB_users2: " + JSON.stringify(users))
+    saveLog("addUsersToDB_body: " + JSON.stringify(body))
     saveToFile(JSON.stringify(users), usersFilePath)
     return "user added"
 }
@@ -97,6 +102,7 @@ function isUserEmailExist(newUser, users) {
 }
 function isUserNameExist(newUser, users) {
     let result = false;
+    saveLog("isUserNameExist_newUser: " + JSON.stringify(newUser))
     if (typeof users == "object" && users.length > 0) {
         let resUser = users.find(function (user) {
             return user.userName === newUser.userName
@@ -113,7 +119,7 @@ function isUserNameExist(newUser, users) {
 app.get('/getUsers', function (req, res) {
     res.send(readFromFile(usersFilePath))
 })
-app.get("/getChatRooms",function(req,res){
+app.get("/getChatRooms", function (req, res) {
     res.send(readFromFile(chatRoomsFilePath))
 })
 app.post('/createRoom', function (req, res) {
@@ -121,7 +127,7 @@ app.post('/createRoom', function (req, res) {
     let db = readFromFile(chatRoomsFilePath)
     let result = addChatToDB(db, text, req.body)
 })
-app.post('/createPrivateChat',function(req,res){
+app.post('/createPrivateChat', function (req, res) {
     let text = [];
     let db = readFromFile(chatRoomsFilePath)
     let result = addChatToDB(db, text, req.body)
@@ -140,7 +146,7 @@ app.get("/dataToChat", function (req, res) {
     res.send(readFromFile(chatFilePath))
 })
 app.post("/sendMesegeToDB", function (req, res) {
-    console.log("enter")
+    saveLog("enter")
     let text = [];
     let db = readFromFile(chatFilePath)
     let result = addMessageToDB(db, text, req.body)
@@ -157,7 +163,9 @@ function addMessageToDB(db, text, body) {
 //authentication
 var connectedUsers = [];
 app.post("/connectUser", function (req, res) {
-    console.log("user:" + req.body)
+    saveLog("user:" + req.body)
+
+
     let result = false;
     if (isUserExist(req.body)) {
         let connectedUser = connectedUsers.find(function (user) {
@@ -178,7 +186,7 @@ app.post("/connectUser", function (req, res) {
     res.send(result);
 })
 app.get("/isUserConnected", function (req, res) {
-    console.log(req)
+    saveLog(req)
     if (req) {
         // res.send(isUserConnected(req.userName))
     }
@@ -208,3 +216,8 @@ function isUserExist(userName) {
     return result;
 }
 //authentication - END
+
+function saveLog(logData) {
+    let logs = readFromFile(logsFilePath)
+    saveToFile(logs + '\n\r' + logData, logsFilePath);
+}

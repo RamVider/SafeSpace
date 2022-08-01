@@ -4,7 +4,7 @@ function headerSetup() {
     if (loggedUser) {
         $("#logoutLabel").removeClass('hidden');
         $("#loginLabel").addClass('hidden');
-        $("#userName").text(loggedUser);
+        $("#loggedUserName").text(loggedUser);
     }
 }
 function isUserConnected() {
