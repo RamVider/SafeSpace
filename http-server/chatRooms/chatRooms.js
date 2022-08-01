@@ -33,13 +33,13 @@ function createUsersInHtml(users) {
     for (let i = 0; i < users.length; i++) {
         if (users[i].userName !== loggedUser) {
             //בשורה 39 יש באג לא מובן אפשר הסבר?
-            let div = `<div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
+            let div = `<ul li class="row">
+                    <ul li class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                        <ul li class="nameSlot" onclick="createPrivateChat('${users[i].userName}')">
                             ${users[i].userName}
-                        </div>
-                    </div>
-                </div>`;
+                        </ul li>
+                    </ul li>
+                </ul li>`;
             container += div
         }
     }
