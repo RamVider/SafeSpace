@@ -1,51 +1,53 @@
 
-addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"}]
-isUserNameExist_newUser: {"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}
-addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"},{"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}]
-addUsersToDB_body: {"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}
-signin_users: 
-signin_result: user added
-enter
-enter
-addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"},{"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}]
-isUserNameExist_newUser: {"name":"ram","password":"12345","age":"17","userName":"ram123","email":"yehuda21@zvialod.com","phone":"0545640884"}
-addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"},{"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"},{"name":"ram","password":"12345","age":"17","userName":"ram123","email":"yehuda21@zvialod.com","phone":"0545640884"}]
-addUsersToDB_body: {"name":"ram","password":"12345","age":"17","userName":"ram123","email":"yehuda21@zvialod.com","phone":"0545640884"}
-signin_users: 
-signin_result: user added
-enter
-enter
-enter
-addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"}]
-isUserNameExist_newUser: {"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}
-addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"},{"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}]
-addUsersToDB_body: {"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}
-signin_users: 
-signin_result: user added
-enter
-enter
-enter
-enter
-enter
-enter
-enter
-enter
-enter
-enter
-addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"},{"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}]
-isUserNameExist_newUser: {"name":"yehuda123","password":"12345","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}
-addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"},{"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"},{"name":"yehuda123","password":"12345","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}]
-addUsersToDB_body: {"name":"yehuda123","password":"12345","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}
-signin_users: 
-signin_result: user added
-enter
-addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"},{"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"},{"name":"yehuda123","password":"12345","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}]
-isUserNameExist_newUser: {"name":"yehuda123","password":"12345","age":"17","userName":"jone","email":"12345","phone":"0545640884"}
-addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"},{"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"},{"name":"yehuda123","password":"12345","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"},{"name":"yehuda123","password":"12345","age":"17","userName":"jone","email":"12345","phone":"0545640884"}]
-addUsersToDB_body: {"name":"yehuda123","password":"12345","age":"17","userName":"jone","email":"12345","phone":"0545640884"}
-signin_users: 
-signin_result: user added
-enter
-enter
-enter
-enter
+
+addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"}]
+
+isUserNameExist_newUser: {"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}
+
+addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"},{"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}]
+
+addUsersToDB_body: {"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}
+
+signin_users: 
+
+signin_result: user added
+
+enter
+
+enter
+
+addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"},{"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"}]
+
+isUserNameExist_newUser: {"name":"ram","password":"12345","age":"17","userName":"ram123","email":"yehuda21@zvialod.com","phone":"0545640884"}
+
+addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"Oli","password":"oli12","age":"17","userName":"","email":"oli29@gmail.com","phone":"052583625"},{"name":"1123","password":"123","age":"1213","userName":"rammmm","email":"123","phone":"123"},{"name":"yehuda","password":"12344","age":"17","userName":"yehuda","email":"yehuda22@zvialod.com","phone":"0545640884"},{"name":"ram","password":"12345","age":"17","userName":"ram123","email":"yehuda21@zvialod.com","phone":"0545640884"}]
+
+addUsersToDB_body: {"name":"ram","password":"12345","age":"17","userName":"ram123","email":"yehuda21@zvialod.com","phone":"0545640884"}
+
+signin_users: 
+
+signin_result: user added
+
+enter
+
+enter
+
+enter
+
+addUsersToDB_users1: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"}]
+
+isUserNameExist_newUser: {"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}
+
+addUsersToDB_users2: [{"name":"רם וידר","password":"123456","age":"36","userName":"Ramvider","email":"Ramvider@gmail.com","phone":"0545819878"},{"name":"jkude","password":"12345","age":"23","userName":"jd","email":"rewv","phone":"0121351"},{"name":"jkude","password":"12345","age":"23","userName":"jdvfdvs","email":"vdfvsd","phone":"0121351"},{"name":"eliya","password":"123","age":"18","userName":"","email":"123","phone":"123"},{"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}]
+
+addUsersToDB_body: {"name":"abc181","password":"abc18","age":"18","userName":"abc18","email":"abc18","phone":"21247824"}
+
+signin_users: 
+
+signin_result: user added
+
+enter
+
+enter
+
+enter
