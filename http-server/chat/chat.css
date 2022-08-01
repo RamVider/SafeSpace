@@ -9,7 +9,7 @@
 .messages-area{
     height: 600px;
     /* height: 93vh; */
-    background-color: beige;
+    background-color: rgb(234, 234, 234);
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
@@ -24,7 +24,7 @@
 .send-btn {
     bottom: 10px;
     border-radius: 50%;
-    background-color: #40c340;
+    background-color: #5dd65d;
     height: 35px;
     width: 47px;
 }
