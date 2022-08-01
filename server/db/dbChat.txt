@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+[{"input":"dasadasd","user":"","guid":"anonymous","time":"2022_08_01T01:06:23"},{"input":"hi","user":"","guid":"anonymous","time":"2022_08_01T01:06:29"}]
+=======
 [{"input":"akuo","user":"","guid":"anonymous","time":"2022_08_01T09:53:57"},{"input":"vfkcxsr","user":"","guid":"anonymous","time":"2022_08_01T09:54:12"},{"input":"nucs","user":"ram123","guid":"Ramvider_2022_07_31T23:50:20","time":"2022_08_01T09:57:15"},{"input":"njlkml,","user":"ram123","guid":"Ramvider_2022_07_31T23:50:20","time":"2022_08_01T09:57:19"},{"input":"זה עובד?","user":"ram123","guid":"Ramvider_2022_07_31T23:50:20","time":"2022_08_01T09:57:53"}]
+>>>>>>> 97ae379a51ad13760c21f1d69048a95119edc9f9
