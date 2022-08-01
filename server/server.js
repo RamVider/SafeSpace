@@ -5,10 +5,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
-const fs = require('fs')
-var usersFilePath = "db/usersDB.txt";
-var chatFilePath = "db/dbChat.txt";
-var chatRoomsFilePath = "db/dbChatRooms.txt"
+const fs = require('fs');
+const { connect } = require('http2');
+var usersFilePath = "db/usersDB.json";
+var chatFilePath = "db/dbChat.json";
+var chatRoomsFilePath = "db/dbChatRooms.json"
 var logsFilePath = "db/logs.txt"
 
 app.listen(3000)
@@ -46,7 +47,7 @@ app.post('/login', function (req, res) {
                     status: "user confirmed",
                     userName: resUser.userName
                 };
-                connectedUsers.push(resUser.userName);
+                connectUser(resUser.userName);
             }
             else {
                 result = "wrong password";
@@ -64,7 +65,8 @@ app.post('/signin', function (req, res) {
     res.send(result)
 });
 app.get('/logout', function (req, res) {
-    disconnectUser(req.body);
+    console.log(req.query.userName)
+    disconnectUser(req.query.userName);
     res.send("user disconnected");
 })
 
@@ -133,16 +135,23 @@ app.post('/createRoom', function (req, res) {
     let result = addChatToDB(db, text, req.body)
 })
 app.post('/createPrivateChat', function (req, res) {
-    let text = [];
+    let chats = [];
     let db = readFromFile(chatRoomsFilePath)
-    let result = addChatToDB(db, text, req.body)
+    addChatToDB(db, chats, req.body)
 })
-function addChatToDB(db, text, body) {
+function addChatToDB(db, chats, body) {
+    console.log("addChatToDB: " + JSON.stringify(body))
     if (db !== "") {
-        text = JSON.parse(db)
+        chats = JSON.parse(db)
     }
-    text.push(body);
-    saveToFile(JSON.stringify(text), chatRoomsFilePath)
+    let chat = chats.find(function (chat) {
+        return chat.guid === body.guid;
+    });
+    console.log(chat)
+    if (chat === undefined) {
+        chats.push(body);
+        saveToFile(JSON.stringify(chats), chatRoomsFilePath)
+    }
 }
 //chat rooms page -END
 
@@ -165,10 +174,21 @@ function addMessageToDB(db, text, body) {
 }
 //Chats -END
 
+
 //authentication
 var connectedUsers = [];
+function connectUser(userName) {
+    const index = connectedUsers.indexOf(userName);
+    if (index < 0) { // only splice array when item is found
+        connectedUsers.push(userName);
+        saveLog("connectedUsers:" + JSON.stringify(connectedUsers))
+    }
+}
 function disconnectUser(userName) {
-    connectedUsers.includes(userName);
+    const index = connectedUsers.indexOf(userName);
+    if (index > -1) { // only splice array when item is found
+        connectedUsers.splice(index, 1); // 2nd parameter means remove one item only
+    }
 }
 
 app.get("/isUserConnected", function (req, res) {

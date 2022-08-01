@@ -29,7 +29,9 @@ function readUserFromSession() {
     return sessionStorage.getItem('loggedUser');
 }
 function logout() {
-    $.get(consts.url + "logout?userName=" + loggedUser, function (data, status) {});
+    $.get(consts.url + "logout?userName=" + loggedUser, function (data, status) {
+        let r = data;
+    });
     sessionStorage.clear();
     location.href = "/"
 }

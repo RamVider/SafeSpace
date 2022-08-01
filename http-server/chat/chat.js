@@ -60,5 +60,5 @@ function getMassegeToChat() {
             $("#messages").html(messageCOntainer)
         }
     })}
-setInterval(getMassegeToChat, 5000);
+setInterval(getMassegeToChat, 1000);
 getMassegeToChat()
