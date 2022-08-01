@@ -33,13 +33,13 @@ function createUsersInHtml(users) {
     for (let i = 0; i < users.length; i++) {
         if (users[i] !== loggedUser) {
             //בשורה 39 יש באג לא מובן אפשר הסבר?
-            let div = `<div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-                        <div class="nameSlot" onclick="createPrivateChat('${users[i]}')">
+            let div = `<ul li class="row">
+                    <ul li class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                        <ul li class="nameSlot" onclick="createPrivateChat('${users[i]}')">
                             ${users[i]}
-                        </div>
-                    </div>
-                </div>`;
+                        </ul li>
+                    </ul li>
+                </ul li>`;
             container += div
         }
     }
@@ -52,13 +52,13 @@ function createRoomsInHtml(rooms) {
     rooms.forEach(room => {
         if (room.roomName) {
             let div = `
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 roomSlot" onclick="goToChat('${room.guid}')" >
+                        <div class="col-sm-3 roomSlot" onclick="goToChat('${room.guid}')" >
                             ${room.roomName}
                         </div>`;
             roomContainer += div;
         } else if (room.addressee === loggedUser) {
             let div = `<div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 nameSlot"  onclick="goToChat('${room.guid}')"">
+                        <div class="col-sm-12 nameSlot"  onclick="goToChat('${room.guid}')"">
                             <div class="senderSlot" >
                                 ${room.sender}
                             </div>

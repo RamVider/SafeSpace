@@ -5,6 +5,7 @@ $(function () {
     }, 50);
 });
 var guid = window.location.search.split('?')[1].split('=')[1]
+isUserConnected();
 function sendMessage() {
     if ($("#input").val()) {
         let input = $("#input").val()
@@ -29,19 +30,29 @@ $(function () {
         }
     });
 });
+function chekIfTheSenderIsTheUser(sender){
+    if(sender==loggedUser){
+        return "pull-left usercolor"
+    }else{
+        return "pull-right"
+    }
+}
+
 function getMassegeToChat() {
-    console.log("gujhmn")
     $.get(consts.url + "dataToChat", function (data, status) {
         if (status === "success" && data !== "") {
             let message = JSON.parse(data)
             let messageCOntainer = ""
             message.forEach(function(message)  {
                 if (message.guid===guid) {
+                    let side= chekIfTheSenderIsTheUser(message.user)
                     let div = `
-                        <div class="mesegeContainer">
-                            <p class="uNameTitel">${message.user}</p>
-                            <h3>${message.input}</h3>
+                    <div class="row">
+                        <div class="col-sm-10  maxWidth mesegeContainer ${side}" >
+                                <p>${message.user}</p>
+                                <h4 dir="rtl">${message.input}</h4>
                         </div>
+                    </div>
                     `
                     messageCOntainer += div
                 }

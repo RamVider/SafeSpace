@@ -8,9 +8,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link rel="stylesheet" href="/global-styles.css">
     <link rel="stylesheet" href="chatRooms.css">
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .glow {
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 5px #ffffff, 0 0 10px #b6b6b6, 0 0 15px #b6b6b6, 0 0 20px #b6b6b6, 0 0 25px #b6b6b6, 0 0 30px #b6b6b6, 0 0 35px #b6b6b6;
+            }
+
+            to {
+                text-shadow: 0 0 10px rgb(181, 181, 181), 0 0 20px #161616, 0 0 30px #404040, 0 0 40px #535353, 0 0 50px #666666, 0 0 60px #666666, 0 0 70px #666666;
+            }
+        }
+    </style>
 </head>
 
-<body>
+<body style="background-color:rgb(221, 218, 218)">
     <div id="header"></div>
     <div id="snackbar"></div>
     <div class="container">
@@ -19,12 +42,12 @@
                 <i id="myBtn" class="fa fa-2x fa-plus" onclick="openModal()"></i>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+        <div class="row ">
+            <div class="glow col-sm-9">
                 <div class="row" id="roomsContainer">
                 </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="col-sm-3">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="privateChatContainer"> :אנשים הרוצים לנהל
                         שיחה פרטית
@@ -32,7 +55,7 @@
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="loggedUsersContainer"> :אנשים מחוברים
+                    <div class="col-sm-12" id="loggedUsersContainer"> :אנשים מחוברים
                     </div>
                 </div>
             </div>

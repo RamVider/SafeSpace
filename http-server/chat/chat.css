@@ -1,26 +1,15 @@
-.uName{
-    text-align: center;
-}
 .chat-border {
     border: 1px solid black;
     border-radius: 5px;
-    /* height: 95vh; */
+    margin-top: 30px;
 }
 .messages-area{
-    height: 600px;
-    /* height: 93vh; */
+    height: 80vh;
     background-color: rgb(234, 234, 234);
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
 }
-/* .text-input{ */
-    /* bottom: 7px; */
-    /* display: flex; */
-    /* align-items: end; */
-    /* position: absolute; */
-    /* width: 103vh; */
-/* } */
 .send-btn {
     bottom: 10px;
     border-radius: 50%;
@@ -41,10 +30,36 @@
     margin-top: 5px;
     margin-bottom: 32px;
     padding-inline: 8px;
+    margin: 3px;
 }
 .chat-window{
     margin-top: 52px;
 }
-.color{
-    padding: 0px !important;
+.usercolor{
+    background-color: greenyellow;
+}
+.maxWidth{
+    max-width: 80vh;
+}
+.nopadding{
+    margin-right: -15px;
+    margin-left: -15px
+}
+.mrInpu{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.marBtn{
+    margin-left: -15px;
+    margin-right: 0px;
+}
+@media screen and (max-width: 550px) {
+    .chat-border{
+        width: 100vh;
+    }
+}
+@media screen and (max-width:500px) {
+    .chat-border{
+        width: 46vh;
+    }
 }
