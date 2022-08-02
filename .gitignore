@@ -2,3 +2,4 @@ server/db/dbChatRooms.json
 server/db/dbChat.json
 server/db/usersDB.json
 server/db/logs.txt
+server/db/logs.log
