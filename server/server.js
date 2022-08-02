@@ -124,6 +124,7 @@ function isUserNameExist(newUser, users) {
 
 //chat rooms page
 app.get('/getUsers', function (req, res) {
+    saveLog("getUsers: " + JSON.stringify(connectedUsers))
     res.send(connectedUsers)
 })
 app.get("/getChatRooms", function (req, res) {
