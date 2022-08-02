@@ -10,7 +10,7 @@ const fs = require('fs');
 var usersFilePath = "db/usersDB.json";
 var chatFilePath = "db/dbChat.json";
 var chatRoomsFilePath = "db/dbChatRooms.json"
-var logsFilePath = "db/logs.txt"
+var logsFilePath = "db/logs.log"
 var connectedUsers = [];
 
 
