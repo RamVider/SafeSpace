@@ -6,11 +6,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors())
 const fs = require('fs');
-const { connect } = require('http2');
+// const { connect } = require('http2');
 var usersFilePath = "db/usersDB.json";
 var chatFilePath = "db/dbChat.json";
 var chatRoomsFilePath = "db/dbChatRooms.json"
 var logsFilePath = "db/logs.txt"
+var connectedUsers = [];
+
 
 app.listen(3000)
 app.get("/", function (req, res) {
@@ -161,7 +163,7 @@ app.get("/dataToChat", function (req, res) {
     res.send(readFromFile(chatFilePath))
 })
 app.post("/sendMesegeToDB", function (req, res) {
-    saveLog("enter")
+    saveLog("saved new message")
     let text = [];
     let db = readFromFile(chatFilePath)
     let result = addMessageToDB(db, text, req.body)
@@ -177,7 +179,6 @@ function addMessageToDB(db, text, body) {
 
 
 //authentication
-var connectedUsers = [];
 function connectUser(userName) {
     const index = connectedUsers.indexOf(userName);
     if (index < 0) { // only splice array when item is found
