@@ -7,10 +7,10 @@ app.use(bodyParser.json())
 app.use(cors())
 const fs = require('fs');
 // const { connect } = require('http2');
-var usersFilePath = "db/usersDB.json";
-var chatFilePath = "db/dbChat.json";
-var chatRoomsFilePath = "db/dbChatRooms.json"
-var logsFilePath = "db/logs.log"
+var usersFilePath = "../db/usersDB.json";
+var chatFilePath = "../db/dbChat.json";
+var chatRoomsFilePath = "../db/dbChatRooms.json"
+var logsFilePath = "../db/logs.log"
 var connectedUsers = [];
 
 

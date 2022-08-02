@@ -120,7 +120,7 @@ function checkForPrivateChatRequest() {
 
 init()
 setInterval(init, 60 * 1000 * 1.5)
-setInterval(getActiveUsers, 2000);
+setInterval(getActiveUsers, 5000);
 
 //pop up js
 // Get the modal
