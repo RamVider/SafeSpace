@@ -10,6 +10,7 @@
 
 <body">
     <div id="header"></div>
+    <div id="snackbar"></div>
     <div class="container">
 
         <div class="row">
@@ -23,23 +24,20 @@
                     <div class="col-sm-12 messages-area">
                         <p id="messages" class=""></p>
                     </div>
-                    <div class="row mrInpu text-input">
-                        <div class="col-xs-11 ">
-                            <input type="text" id="input" class="form-control nopadding" placeholder="Type Here..." />
-                        </div>
-                        <div class="col-xs-1 marBtn color">
-                            <div class="send-btn nopadding" onclick="sendMessage()"><img class="imp-responsive img-fluid"
-                                    src="https://cdn-icons-png.flaticon.com/512/60/60525.png" />
-                            </div>
-                        </div>
+                    <div class="input-group">
+                        <input type="text" id="input" class="form-control" placeholder="Type Here..." />
+                        <span class="input-group-addon" onclick="sendMessage()"><i
+                                class="glyphicon glyphicon-send text-success"></i></span>
                     </div>
                 </div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script src="/commonFiles/const.js"></script>
         <script src="/commonFiles/service.js"></script>
         <script src="chat.js"></script>
-</body>
+        </body>
+
 </html>

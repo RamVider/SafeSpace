@@ -1,2 +1,4 @@
-server/db/dbChat.txt
-server/db/usersDB.txt
+db/dbChatRooms.json
+db/dbChat.json
+db/usersDB.json
+db/logs.log

@@ -3,7 +3,21 @@ $(function () {
     setTimeout(() => {
         headerSetup()
     }, 50);
+
+    $("body").keypress(function (e) {
+        var key = e.which;
+        if (key == 13)  // the enter key code
+        {
+            if (isSignUp) {
+                signIn();
+            }
+            else {
+                login();
+            }
+        }
+    })
 });
+var isSignUp = false;
 var userList = []
 var userInfo = []
 function login() {
@@ -16,13 +30,13 @@ function login() {
 
 
     $.post(consts.url + "login", user, function (data, status) {
-    if (status == "success") {
-            if(data.status === "user confirmed"){
+        if (status == "success") {
+            if (data.status === "user confirmed") {
                 saveUserToSession(data.userName);
                 location.href = "/chatRooms/chatRooms.html";
             }
-            else{
-                alert(data)
+            else {
+                popup(data)
             }
         }
     })
@@ -48,9 +62,9 @@ function signIn() {
     })
     $.post(consts.url + `signin`, user, function (data, status) {
         if (status == "success") {
-            alert(data)
+            popup(data)
             console.log(data)
-            if(data=="user added"){
+            if (data == "user added") {
                 location.href = "/logInPage/logIn.html"
             }
         }
@@ -68,10 +82,12 @@ function getData() {
 function goToSignUp() {
     $("#login").hide()
     $("#signup").show()
+    isSignUp = true;
     document.getElementById("signup").classList.remove('hidden')
 }
 function goToSignIn() {
     $("#login").show()
     $("#signup").hide()
+    isSignUp = false;
     document.getElementById("login").classList.remove('hidden')
 }
