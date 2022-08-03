@@ -5,7 +5,7 @@ $(function () {
     }, 50);
 });
 var guid = window.location.search.split('?')[1].split('=')[1]
-if(guid!=="anonymous"){
+if(guid!=="anonymous"||loggedUser!==""){
     isUserConnected();
 }
 function sendMessage() {
@@ -23,6 +23,9 @@ function sendMessage() {
         $.post(consts.url + "sendMesegeToDB", data, function (data, status) {})
         getMassegeToChat()
         $("#input").val("");
+        if(guid!=="anonymous"||loggedUser!==""){
+            isUserConnected();
+        }
     }
 }
 $(function () {
