@@ -23,7 +23,7 @@ function sendMessage() {
         $.post(consts.url + "sendMesegeToDB", data, function (data, status) {})
         getMassegeToChat()
         $("#input").val("");
-        if(guid!=="anonymous"||loggedUser!==""){
+        if(guid!=="anonymous"){
             isUserConnected();
         }
     }
