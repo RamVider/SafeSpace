@@ -11,11 +11,17 @@
   <style>
     .parallax {
       background-image: url("https://sp.rmbl.ws/s8/1/x/h/c/Y/xhcYa.OvCc-small--.jpg");
-      height: 600px;
+      height: 500px;
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 1550px 650px;
+      background-size: 1550px 550px;
+    }
+
+    @media screen and (max-width: 580px) {
+      .parallax {
+        background-size: 550px 550px;
+      }
     }
 
     h1 {
