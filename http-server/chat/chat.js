@@ -9,7 +9,7 @@ if(guid!=="anonymous"){
     isUserConnected();
 }
 function sendMessage() {
-    if ($("#input").val()) {
+    if ($("#input").val()&&(guid=="anonymous"||loggedUser!=="")) {
         let input = $("#input").val()
         let user = loggedUser
         const d = new Date();
@@ -23,8 +23,6 @@ function sendMessage() {
         $.post(consts.url + "sendMesegeToDB", data, function (data, status) {})
         getMassegeToChat()
         $("#input").val("");
-        if(guid!=="anonymous"){
-            isUserConnected();
     }
 }
 $(function () {
